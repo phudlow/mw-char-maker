@@ -1,0 +1,37 @@
+body {
+  border: 0;
+  margin: 0;
+  /* background-color: pink; */
+}
+
+#form, #class-form, #result {
+  & > * {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.secondary-attributes,
+.primary-attributes,
+.major-skills-result,
+.minor-skills-result,
+.misc-skills-result > div {
+  width: 150px;
+  span:last-child {
+    float: right;
+  }
+}
+
+.secondary-attributes {
+  span {
+    width: 60px;
+    text-align: center;
+  }
+  .health  { background-color: lightcoral; }
+  .magicka { background-color: dodgerblue; }
+  .fatigue { background-color: palegreen;  }
+}
+
+img {
+  float: left;
+}

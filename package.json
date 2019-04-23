@@ -23,7 +23,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "jsdom": "^15.0.0"
-  }
+  "devDependencies": {}
 }

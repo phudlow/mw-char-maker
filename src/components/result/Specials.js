@@ -46,8 +46,6 @@ class Specials extends Component {
             return acc;
         }, [])
 
-        console.log(magicSchoolSpells, startingSpellsBySchool);
-
         return {
             abilities: Array.prototype.concat(
                 raceSpecials.abilities      || [],

@@ -1,6 +1,10 @@
 Morrowind character creation simulator built with only React
 
-TODO
+**TODO - UI improvements**
+1) Add tooltips
+2) Replace selects with popups, or a styleable select replacer
+
+**TODO - Tech improvements**
 1) Add redux (for better state management), then
 2) Add react-redux (for better code organization, and to scope components to the state they need to prevent unneeded rerenders)
 3) Change redux to react context (to see what its about)

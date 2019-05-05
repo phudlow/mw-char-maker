@@ -260,7 +260,7 @@ const raceData = {
         },
         skills: {
             blunt_weapon: 5,
-            hand_to_hand: 5,
+            "hand-to-hand": 5,
             light_armor: 5,
             long_blade: 10,
             mercantile: 10,
@@ -308,7 +308,7 @@ const raceData = {
         skills: {
             acrobatics: 15,
             athletics: 5,
-            hand_to_hand: 5,
+            "hand-to-hand": 5,
             light_armor: 5,
             security: 5,
             short_blade: 5,

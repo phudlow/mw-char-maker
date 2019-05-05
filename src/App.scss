@@ -1,7 +1,24 @@
+// ----- //
+// Fonts //
+// ----- //
+@font-face {
+  font-family: Pelagiad;
+  src: url(./fonts/Pelagiad.ttf);
+}
+
+
+// ------ //
+// Global //
+// ------ //
 body {
   border: 0;
   margin: 0;
-  /* background-color: pink; */
+  cursor: default;
+  font-size: 14pt;
+
+  &, select {
+    font-family: Pelagiad;
+  }
 }
 
 #form, #class-form, #result {
@@ -15,9 +32,9 @@ body {
 .primary-attributes,
 .major-skills-result,
 .minor-skills-result,
-.misc-skills-result > div {
+.misc-skills-result {
   width: 150px;
-  span:last-child {
+  span:not(:first-child) {
     float: right;
   }
 }
@@ -34,4 +51,59 @@ body {
 
 img {
   float: left;
+}
+
+// --------- //
+// Hoverable //
+// --------- //
+.hoverable {
+
+  .tooltip {
+    position: absolute;
+    background-color: grey;
+    padding: 10px;
+    border: 1px solid black;
+    color: black;
+    text-align: left;
+  }
+}
+
+
+// --------- //
+// Selectors //
+// --------- //
+.selector-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0.5, 0.5, 0.5, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  > div {
+    background-color: white;
+    > .title {
+      text-align: center;
+    }
+  }
+
+  .hoverable:hover {
+    color: pink;
+    cursor: pointer;
+  }
+
+  .skill-select-popup {
+    > div:not(.title) {
+      display: inline-block;
+      text-align: left;
+    }
+  }
+
+  button {
+    float: right;
+  }
 }

@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { toPresentationStr } from '../../utils.js';
+import SkillElement from '../hoverable/SkillElement';
 
 function MinorSkillsResult(props) {
     const skillElements = [];
-    for (let skill in props.skills) {
-        skillElements.push(<div key={skill}><span>{toPresentationStr(skill)}</span><span>{props.skills[skill]}</span></div>)
-    }
+    Object.keys(props.skills).sort().forEach(skill => {
+        skillElements.push(
+            <SkillElement key={skill} value={props.skills[skill]} name={skill} />
+        );
+    });
     return (
         <div className="minor-skills-result">
             Minor Skills

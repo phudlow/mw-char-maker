@@ -8,20 +8,20 @@ function Form(props) {
     return (
         <div id="form">
             <Person
-                changeHandlers={props.changeHandlers.person}
+                eventHandlers={props.eventHandlers.person}
                 name={props.data.name}
                 race={props.data.race}
                 sex={props.data.sex}
             />
             <Class
-                changeHandlers={props.changeHandlers.class}
+                eventHandlers={props.eventHandlers.class}
                 specialization={props.data.specialization}
                 favoredAttributes={props.data.favoredAttributes}
                 majorSkills={props.data.majorSkills}
                 minorSkills={props.data.minorSkills}
             />
             <Birthsign
-                changeHandlers={props.changeHandlers.birthsign}
+                eventHandlers={props.eventHandlers.birthsign}
                 birthsign={props.data.birthsign}
             />
         </div>

@@ -3,6 +3,7 @@ import './App.scss';
 
 import Form from './components/form/Form';
 import Result from './components/result/Result';
+import SelectorContainer from './components/selector/SelectorContainer';
 
 const initialState = {
   name: 'Sarge',
@@ -31,7 +32,11 @@ const initialState = {
     'athletics',
     'enchant'
   ],
-  birthsign: 'apprentice'
+  birthsign: 'apprentice',
+
+  // If selecting, an object which holds "for" and "index" info about what is being selected
+  // Example: selecting: { for: 'majorSkills', index: 1 }
+  selecting: null,
 }
 
 class App extends Component {
@@ -39,48 +44,100 @@ class App extends Component {
     super(props);
     this.state = initialState;
 
-    this.changeHandlers = {
+    this.eventHandlers = {
       person: {
-        nameChange: this.nameChange.bind(this),
-        raceChange: this.raceChange.bind(this),
-        sexChange:  this.sexChange.bind(this)
+        onNameChange: this.changeName.bind(this),
+        onRaceClick: this.showRaceSelector.bind(this),
+        onSexClick: this.changeSex.bind(this)
       },
       class: {
-        specializationChange:   this.specializationChange.bind(this),
-        favoredAttributeChange: this.favoredAttributeChange.bind(this),
-        majorSkillChange:       this.skillChange.bind(this, 'major'),
-        minorSkillChange:       this.skillChange.bind(this, 'minor'),
+        onSpecializationClick:   this.showSpecializationSelector.bind(this),
+        onFavoredAttributeClick: this.showFavoredAttributeSelector.bind(this),
+        onMajorSkillClick:       this.showSkillSelector.bind(this, 'major'),
+        onMinorSkillClick:       this.showSkillSelector.bind(this, 'minor'),
       },
       birthsign: {
-        birthsignChange: this.birthsignChange.bind(this) 
+        onBirthsignClick: this.showBirthsignSelector.bind(this) 
       }
     };
 
-    this.printState = this.printState.bind(this);
+    this.onSelectionClick                         = this.onSelectionClick.bind(this);
+    this.getNewStateFromSkillSelection            = this.getNewStateFromSkillSelection.bind(this);
+    this.getNewStateFromFavoredAttributeSelection = this.getNewStateFromFavoredAttributeSelection.bind(this);
   }
-  nameChange(e) {
+  changeName(e) {
     this.setState({
       name: e.target.value
     });
   }
-  raceChange(e) {
+  showRaceSelector(e) {
     this.setState({
-      race: e.target.value
+      selecting: {
+        for: 'race'
+      }
     });
   }
-  sexChange(e) {
+  changeSex(e) {
     this.setState({
-      sex: e.target.value
+      sex: this.state.sex === 'male' ? 'female' : 'male'
     });
   }
-  specializationChange(e) {
+  showSpecializationSelector(e) {
     this.setState({
-      specialization: e.target.value
+      selecting: {
+        for: 'specialization'
+      }
     });
   }
-  favoredAttributeChange(e) {
-    const value             = e.target.value;
-    const index             = e.target.getAttribute('index');
+  showFavoredAttributeSelector(e) {
+    this.setState({
+      selecting: {
+        for: 'favoredAttribute',
+        index: e.target.closest('.hoverable').getAttribute('index')
+      }
+    });
+  }
+  showSkillSelector(type, e) {
+    this.setState({
+      selecting: {
+        for: `${type}Skills`,
+        index: e.target.closest('.hoverable').getAttribute('index')
+      }
+    });
+  }
+  showBirthsignSelector(e) {
+    this.setState({
+      selecting: {
+        for: 'birthsign'
+      }
+    });
+  }
+  onSelectionClick(e) {
+    const el        = e.target.closest('.hoverable');
+    const value     = el && el.getAttribute('name');
+    const selecting = this.state.selecting;
+    const newState  = {
+      selecting: null
+    };
+
+    if (value) {
+
+      if (selecting.for.includes('Skill')) {
+        Object.assign(newState, this.getNewStateFromSkillSelection(value, selecting));
+      }
+      else if (selecting.for === 'favoredAttribute') {
+        Object.assign(newState, this.getNewStateFromFavoredAttributeSelection(value, selecting));
+      }
+      else {
+        newState[selecting.for] = value;
+      }
+
+    }
+
+    this.setState(newState);
+  }
+  getNewStateFromFavoredAttributeSelection(value, selecting) {
+    const index             = selecting.index;
     const otherIndex        = index === '0' ? 1 : 0;
     const favoredAttributes = this.state.favoredAttributes;
     const prevValue         = favoredAttributes[index];
@@ -94,14 +151,13 @@ class App extends Component {
       favoredAttributes[index] = value;
     }
 
-    this.setState({
+    return {
       favoredAttributes
-    });
+    };
   }
-  skillChange(type, e) {
-    const value       = e.target.value;
-    const index       = e.target.getAttribute('index');
-    const prevValue   = this.state[type + 'Skills'][index];
+  getNewStateFromSkillSelection(value, selecting) {
+    const index       = selecting.index;
+    const prevValue   = this.state[selecting.for][index];
     const majorSkills = this.state.majorSkills.slice(0);
     const minorSkills = this.state.minorSkills.slice(0);
     let currentSkillIndex;
@@ -115,34 +171,33 @@ class App extends Component {
       minorSkills[currentSkillIndex] = prevValue;
     }
 
-    if (type === 'major') {
+    if (selecting.for === 'majorSkills') {
       majorSkills[index] = value;
     }
     else {
       minorSkills[index] = value;
     }
 
-    this.setState({
+    return {
       majorSkills,
       minorSkills
-    })             
-  }
-  birthsignChange(e) {
-    this.setState({
-      birthsign: e.target.value
-    });
-  }
-  // TODO: delete this and its button and its binding in constructor
-  printState() {
-    console.log(this.state);
+    };
   }
   render() {
     return (
       <div>
-        <Form data={this.state} changeHandlers={this.changeHandlers}/>
+        <Form
+          data={this.state}
+          eventHandlers={this.eventHandlers}
+        />
         <hr/>
-        <Result data={this.state}/>
-        <button onClick={this.printState}>Print State</button>
+        <Result
+          data={this.state}
+        />
+        <SelectorContainer
+          selecting={this.state.selecting}
+          onSelectionClick={this.onSelectionClick}
+        />
       </div>
     );
   }

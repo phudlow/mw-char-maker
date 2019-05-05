@@ -9,7 +9,7 @@ import Specials from './Specials';
 
 import races from '../../gamedata/races';
 import birthsigns from '../../gamedata/birthsigns';
-import skillDefaults from '../../gamedata/skillDefaults';
+import skills from '../../gamedata/skills';
 
 class Result extends Component {
     constructor(props) {
@@ -41,21 +41,26 @@ class Result extends Component {
                (races[this.props.data.race].magickaMultiplier || 0 ) +
                (birthsigns[this.props.data.birthsign].magickaMultiplier || 0);
     }
-    getSkills() {
-        const allSkills    = Object.assign({}, skillDefaults);
+    getSkillValues() {
+        const skillValues  = {};
         const raceBonuses  = races[this.props.data.race].skills;
+        const spec         = this.props.data.specialization;
         const gatherValues = (acc, curr) => {
-            acc[curr] = allSkills[curr];
-            delete allSkills[curr];
+            acc[curr] = skillValues[curr];
+            delete skillValues[curr];
             return acc;
         };
 
-        for (let skill in raceBonuses) {
-            allSkills[skill] += raceBonuses[skill];
+        for (let skill in skills) {
+            skillValues[skill] = skills[skill].spec === spec ? 10 : 5;
         }
 
-        this.props.data.majorSkills.forEach(skill => allSkills[skill] += 25);
-        this.props.data.minorSkills.forEach(skill => allSkills[skill] += 10);
+        for (let skill in raceBonuses) {
+            skillValues[skill] += raceBonuses[skill];
+        }
+
+        this.props.data.majorSkills.forEach(skill => skillValues[skill] += 25);
+        this.props.data.minorSkills.forEach(skill => skillValues[skill] += 10);
 
         const majorSkills = this.props.data.majorSkills.reduce(gatherValues, {});
         const minorSkills = this.props.data.minorSkills.reduce(gatherValues, {});
@@ -63,12 +68,12 @@ class Result extends Component {
         return {
             majorSkills,
             minorSkills,
-            miscSkills: allSkills
+            miscSkills: skillValues
         };
     }
     render() {
         const primaryAttributes = this.getPrimaryAttributes();
-        const skills            = this.getSkills();
+        const skillValues       = this.getSkillValues();
         return (
             <div id="result">
                 <div>
@@ -100,16 +105,16 @@ class Result extends Component {
                 <div>
                     {/*Major Skills*/}
                     <MajorSkillsResult
-                        skills={skills.majorSkills}
+                        skills={skillValues.majorSkills}
                     />
                     {/*Minor Skills*/}
                     <MinorSkillsResult
-                        skills={skills.minorSkills}
+                        skills={skillValues.minorSkills}
                     />
                 </div>
                 {/*Misc Skills*/}
                 <MiscSkillsResult
-                    skills={skills.miscSkills}
+                    skills={skillValues.miscSkills}
                 />
                 {/*Specials*/}
                 <Specials
@@ -117,8 +122,8 @@ class Result extends Component {
                     birthsign={this.props.data.birthsign}
                     chosenSkills={
                         Array.prototype.concat(
-                            Object.keys(skills.minorSkills),
-                            Object.keys(skills.majorSkills)
+                            Object.keys(skillValues.minorSkills),
+                            Object.keys(skillValues.majorSkills)
                         )
                     }
                 />

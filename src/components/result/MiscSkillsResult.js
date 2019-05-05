@@ -1,11 +1,13 @@
 import React from 'react';
 
-import { toPresentationStr } from '../../utils.js';
+import SkillElement from '../hoverable/SkillElement';
 
-function MinorSkillsResult(props) {
+function MiscSkillsResult(props) {
     const skillElements = [];
     Object.keys(props.skills).sort().forEach(skill => {
-        skillElements.push(<div key={skill}><span>{toPresentationStr(skill)}</span><span>{props.skills[skill]}</span></div>)
+        skillElements.push(
+            <SkillElement key={skill} value={props.skills[skill]} name={skill} />
+        );
     });
     return (
         <div className="misc-skills-result">
@@ -16,4 +18,4 @@ function MinorSkillsResult(props) {
     );
 }
 
-export default MinorSkillsResult;
+export default MiscSkillsResult;

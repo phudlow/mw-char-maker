@@ -165,7 +165,7 @@ const birthsigns = {
             speed: 25
         },
         specials: {
-            abilties: [{
+            abilities: [{
                 name: 'Charioteer',
                 effects: [{
                     spell: 'fortify_attribute',

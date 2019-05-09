@@ -1,6 +1,7 @@
 import React from 'react';
 
 import skills from '../../gamedata/skills.js';
+
 import SkillElement from '../hoverable/SkillElement';
 
 function SkillSelector(props) {

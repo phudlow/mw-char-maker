@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
+import races from '../../gamedata/races';
+import birthsigns from '../../gamedata/birthsigns';
+import skills from '../../gamedata/skills';
+
 import SecondaryAttributes from './SecondaryAttributes';
 import PrimaryAttributes from './PrimaryAttributes';
 import MajorSkillsResult from './MajorSkillsResult';
 import MinorSkillsResult from './MinorSkillsResult';
 import MiscSkillsResult from './MiscSkillsResult';
 import Specials from './Specials';
-
-import races from '../../gamedata/races';
-import birthsigns from '../../gamedata/birthsigns';
-import skills from '../../gamedata/skills';
 
 class Result extends Component {
     constructor(props) {
@@ -107,6 +107,7 @@ class Result extends Component {
                     <MajorSkillsResult
                         skills={skillValues.majorSkills}
                     />
+                    <br/>
                     {/*Minor Skills*/}
                     <MinorSkillsResult
                         skills={skillValues.minorSkills}

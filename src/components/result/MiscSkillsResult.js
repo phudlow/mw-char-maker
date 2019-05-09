@@ -11,8 +11,7 @@ function MiscSkillsResult(props) {
     });
     return (
         <div className="misc-skills-result">
-            Misc Skills
-            <br/>
+            <div className="title">Misc Skills</div>
             {skillElements}
         </div>
     );

@@ -4,7 +4,7 @@ import BirthsignElement from '../hoverable/BirthsignElement';
 
 function Birthsign(props) {
     return (
-        <div>
+        <div id="birthsign">
             <div className="title">Birthsign</div>
             <BirthsignElement name={props.birthsign} onClick={props.eventHandlers.onBirthsignClick} />
         </div>

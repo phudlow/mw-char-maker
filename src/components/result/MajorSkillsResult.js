@@ -4,15 +4,14 @@ import SkillElement from '../hoverable/SkillElement';
 
 function MajorSkillsResult(props) {
     const skillElements = [];
-    Object.keys(props.skills).sort().forEach(skill => {
+    Object.keys(props.skills).forEach(skill => {
         skillElements.push(
             <SkillElement key={skill} value={props.skills[skill]} name={skill} />
         );
     });
     return (
         <div className="major-skills-result">
-            Major Skills
-            <br/>
+            <div className="title">Major Skills</div>
             {skillElements}
         </div>
     );

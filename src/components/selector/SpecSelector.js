@@ -1,17 +1,15 @@
 import React from 'react';
 
-import specs from '../../gamedata/specializations';
 import SpecElement from '../hoverable/SpecElement';
 
 function SpecSelector(props) {
-    const specsHtml = Object.keys(specs).map(spec => {
-        return <SpecElement key={spec} name={spec} onClick={props.onSelectionClick} />;
-    });
     return (
         <div hidden={!props.active}>
-            Choose a Specialization
+            <div className="title">Choose a Specialization</div>
             <br/><br/>
-            {specsHtml}
+            <SpecElement name="combat"  onClick={props.onSelectionClick} />
+            <SpecElement name="magic"   onClick={props.onSelectionClick} />
+            <SpecElement name="stealth" onClick={props.onSelectionClick} />
             <br/>
             <button onClick={props.onSelectionClick}>Cancel</button>
         </div>

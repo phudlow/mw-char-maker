@@ -1,20 +1,33 @@
 import React from 'react';
 
-// import races from '../../gamedata/races';
+import { toPresentationStr, createSpecialsHtml } from '../../utils';
+import races from '../../gamedata/races';
 
 import HoverableElement from './HoverableElement';
 
 class RaceElement extends HoverableElement {
+
     getTooltip() {
         return (
-            <div className="tooltip" hidden>
-                {this.props.name}
-                {/* <div>
-                    <img src={require(`../../img/icons/skills/${this.props.name}.png`)} alt="" />
-                    <div className="title">{toPresentationStr(this.props.name)}</div>
-                    <div>Governing Attribute: {toPresentationStr(skills[this.props.name].governingAttribute)}</div>
+            <div className="tooltip race" hidden>
+                <div className="title">{toPresentationStr(this.props.name)}</div>
+                {/* <br/> */}
+                {/* <div>{races[this.props.name].description}</div> */}
+                <br/>
+                <div className="stats">
+                    <div>
+                        <div className="title">Skill Bonuses</div>
+                        {Object.keys(races[this.props.name].skills).map(skill => {
+                            return (
+                                <div key={skill}>
+                                    <span>{toPresentationStr(skill)}</span>
+                                    <span>{races[this.props.name].skills[skill]}</span>                                    
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div>{createSpecialsHtml(races[this.props.name].specials)}</div>
                 </div>
-                <div>{skills[this.props.name].description}</div> */}
             </div>
         );
     }

@@ -6,7 +6,7 @@ import Result from './components/result/Result';
 import SelectorContainer from './components/selector/SelectorContainer';
 
 const initialState = {
-  name: 'Sarge',
+  name: '',
   // face: '',
   // hair: '',
   sex: 'male',
@@ -185,12 +185,11 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <div id="app">
         <Form
           data={this.state}
           eventHandlers={this.eventHandlers}
         />
-        <hr/>
         <Result
           data={this.state}
         />

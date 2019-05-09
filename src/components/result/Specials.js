@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { createSpecialsHtml } from '../../utils';
 import races from '../../gamedata/races';
 import birthsigns from '../../gamedata/birthsigns';
 import startingSpellsBySchool from '../../gamedata/startingSpellsBySchool';
@@ -9,30 +10,6 @@ class Specials extends Component {
         super(props);
 
         this.getSpecials = this.getSpecials.bind(this);
-    }
-    createSpecialHtml(specials) {
-        return specials.map(special => {
-            let effectsHtml = special.effects.map(effect => {
-                return (
-                    <div key={effect.text}>
-                        <img
-                            src={require(`../../img/icons/spells/${effect.spell}.png`)}
-                            alt=''
-                            style={{height: '1em'}}
-                        />
-                        {effect.text}
-                    </div>
-                )
-            });
-            return (
-                <div style={{width: '300px'}} key={special.name}>
-                    {special.name}
-                    <div>
-                        {effectsHtml}
-                    </div>
-                </div>
-            );
-        });
     }
     getSpecials() {
         const raceSpecials        = races[this.props.race].specials;
@@ -63,18 +40,12 @@ class Specials extends Component {
         }
     }
     render() {
-        const { abilities, powers, spells } = this.getSpecials();
-
-        const abilitiesHtml = abilities.length ? <div>Abilities{this.createSpecialHtml(abilities)}</div> : null;
-        const powersHtml    = powers.length ? <div>Powers{this.createSpecialHtml(powers)}</div> : null;
-        const spellsHtml    = spells.length ? <div>Spells{this.createSpecialHtml(spells)}</div> : null;
+        const specialsHtml = createSpecialsHtml(this.getSpecials());
 
         return (
 
-            <div className="specials">
-                {abilitiesHtml}
-                {powersHtml}
-                {spellsHtml}
+            <div>
+                {specialsHtml}
             </div>
         );
     }

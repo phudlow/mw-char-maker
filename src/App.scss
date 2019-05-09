@@ -10,15 +10,41 @@
 // ------ //
 // Global //
 // ------ //
+$title-text-color   : rgb(223, 201, 159);
+$regular-text-color : rgb(202, 165, 96);
+$font-size          : 14pt;
+$cursor             : url(./img/cursor.png) 0 0, auto;
+$column-width       : 150px;
+$column-side-margin : 20px;
+
 body {
   border: 0;
   margin: 0;
-  cursor: default;
-  font-size: 14pt;
 
-  &, select {
-    font-family: Pelagiad;
-  }
+  cursor: $cursor;
+
+  font-size: $font-size;
+  font-family: Pelagiad;
+
+  user-select: none;
+
+  color: $regular-text-color;
+  .title { color: $title-text-color }
+
+  background-color: black;
+}
+
+#form .hoverable:hover {
+  color: $title-text-color;
+}
+
+// ------ //
+// Layout //
+// ------ //
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #form, #class-form, #result {
@@ -28,82 +54,232 @@ body {
   }
 }
 
+#person,
+#class-form > div,
+#birthsign,
 .secondary-attributes,
 .primary-attributes,
 .major-skills-result,
 .minor-skills-result,
 .misc-skills-result {
-  width: 150px;
-  span:not(:first-child) {
-    float: right;
+  width: $column-width;
+}
+
+
+#person,
+#class-form > div:first-child,
+#birthsign,
+.secondary-attributes,
+.primary-attributes,
+.major-skills-result,
+.minor-skills-result,
+.misc-skills-result {
+  margin-right: $column-side-margin;
+}
+
+#form, #result {
+  display: inline-block;
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid $regular-text-color;
+  width: 49em;
+}
+
+span:not(:first-child) {
+  float: right;
+}
+
+// ---------- //
+// Text Input //
+// ---------- //
+input[type=text] {
+  font-family: Pelagiad;
+  width: 100%;
+  font-size: $font-size;
+  background-color: black;
+  border: 1px solid $regular-text-color;
+  color: $regular-text-color;
+  outline: none;
+  &::selection {
+    // TODO figure out what the actual selection color is
+    background-color: white;
+  }
+
+  &:hover {
+    color: $title-text-color;
+  }
+  &:focus {
+    border: 1px solid $title-text-color;
+    color: $title-text-color;
   }
 }
 
+
+// ------------------------ //
+// Secondary Attribute Bars //
+// ------------------------ //
 .secondary-attributes {
   span {
-    width: 60px;
+    width: 70px;
     text-align: center;
   }
-  .health  { background-color: lightcoral; }
-  .magicka { background-color: dodgerblue; }
-  .fatigue { background-color: palegreen;  }
+  .health  { 
+    background: #9d3018; /* Old browsers */
+    background: -moz-linear-gradient(top, #9d3018 1%, #9e2f18 15%, #2d0e07 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #9d3018 1%,#9e2f18 15%,#2d0e07 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #9d3018 1%,#9e2f18 15%,#2d0e07 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9d3018', endColorstr='#2d0e07',GradientType=0 ); /* IE6-9 */
+  }
+  .magicka {
+    background: #2a367d; /* Old browsers */
+    background: -moz-linear-gradient(top, #2a367d 18%, #2a367d 18%, #0c1024 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #2a367d 18%,#2a367d 18%,#0c1024 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #2a367d 18%,#2a367d 18%,#0c1024 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a367d', endColorstr='#0c1024',GradientType=0 ); /* IE6-9 */background-color: dodgerblue;
+  }
+  .fatigue {
+    background: #00762f; /* Old browsers */
+    background: -moz-linear-gradient(top, #00762f 17%, #00230d 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #00762f 17%,#00230d 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #00762f 17%,#00230d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00762f', endColorstr='#00230d',GradientType=0 ); /* IE6-9 */
+  }
 }
 
-img {
-  float: left;
+// -------- //
+// Specials //
+// -------- //
+.special {
+  div div {
+    padding-top: 3px;
+  }
+  img {
+    float: left;
+    height: 1em;
+    padding-right: 5px;
+  }
 }
 
-// --------- //
-// Hoverable //
-// --------- //
+// ------- //
+// Tooltip //
+// ------- //
 .hoverable {
 
   .tooltip {
     position: absolute;
-    background-color: grey;
-    padding: 10px;
-    border: 1px solid black;
-    color: black;
+    background-color: black;
+    padding: 15px;
+    border: 2px solid $regular-text-color;
+    color: $regular-text-color;
     text-align: left;
+
+    .icon-header {
+      height: 2.2em;
+      .title {
+        text-align: left;
+      }
+      img {
+        height: 100%;
+        margin-right: 10px;
+        float: left;
+      }
+      padding-bottom: 10px;
+    }
+
+    > .title {
+      text-align: center;
+    }
+
+    &.skill {
+      width: 23em;
+    }
+
+    &.specialization {
+      text-align: center;
+    }
+
+    &.primary-attribute .title {
+      padding-top: 0.4em;
+    }
+
+    &.secondary-attribute {
+      .icon-header {
+        height: auto;
+        padding: 0;
+        img {
+          height: 2.2em;
+        }
+        .value {
+          margin-left: calc(2.2em + 10px);
+        }
+      }
+    }
+
+    &.race {
+      .stats {
+        * {
+          vertical-align: top;
+        }
+        > div {
+          &:first-child {
+            width: $column-width;
+            margin-right: 30px;
+          }
+          display: inline-block;
+        }
+      }
+    }
   }
 }
 
 
-// --------- //
-// Selectors //
-// --------- //
+// --------------- //
+// Selector Modals //
+// --------------- //
 .selector-container {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0.5, 0.5, 0.5, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-color: rgba(0.5, 0.5, 0.5, 0.5);
 
   > div {
-    background-color: white;
-    > .title {
-      text-align: center;
-    }
+    background-color: black;
+    border: 2px solid $regular-text-color;
+    padding: 10px;
   }
 
   .hoverable:hover {
-    color: pink;
-    cursor: pointer;
+    color: $title-text-color;
   }
 
   .skill-select-popup {
     > div:not(.title) {
       display: inline-block;
       text-align: left;
+      width: 130px;
     }
   }
+}
 
-  button {
-    float: right;
+// ------ //
+// Button //
+// ------ //
+button {
+  border: 1px solid $regular-text-color;
+  outline: 1px solid $title-text-color;
+  background-color: black;
+  font-family: Pelagiad;
+  font-size: $font-size;
+  color: $regular-text-color;
+  float: right;
+  cursor: $cursor;
+  &:hover {
+    color: $title-text-color
   }
 }

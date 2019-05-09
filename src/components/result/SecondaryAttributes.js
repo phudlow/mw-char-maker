@@ -1,5 +1,7 @@
 import React from 'react';
 
+import SecondaryAttributeElement from '../hoverable/SecondaryAttributeElement';
+
 function SecondaryAttributes(props) {
     const health  = Math.floor((props.strength + props.endurance) / 2);
     const magicka = props.intelligence * props.magickaMultiplier;
@@ -7,9 +9,9 @@ function SecondaryAttributes(props) {
 
     return (
         <div className="secondary-attributes">
-            <div><span>Health</span><span className="health">{health}/{health}</span></div>
-            <div><span>Magicka</span><span className="magicka">{magicka}/{magicka}</span></div>
-            <div><span>Fatigue</span><span className="fatigue">{fatigue}/{fatigue}</span></div>
+            <SecondaryAttributeElement name="health" value={health}/>
+            <SecondaryAttributeElement name="magicka" value={magicka}/>
+            <SecondaryAttributeElement name="fatigue" value={fatigue}/>
         </div>
     );
 }

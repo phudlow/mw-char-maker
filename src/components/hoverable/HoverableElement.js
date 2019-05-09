@@ -19,7 +19,7 @@ class HoverableElement extends Component {
 
         if (tip) {
             tip.removeAttribute('hidden');
-            tip.style.left = `${e.clientX + 15}px`;
+            tip.style.left = `${e.clientX + 25}px`;
             tip.style.top  = `${e.clientY + window.scrollY}px`;
         }
     }

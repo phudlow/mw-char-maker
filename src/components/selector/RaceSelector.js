@@ -1,6 +1,7 @@
 import React from 'react';
 
 import races from '../../gamedata/races.js';
+
 import RaceElement from '../hoverable/RaceElement';
 
 function RaceSelector(props) {

@@ -10,8 +10,8 @@ function AttributeSelector(props) {
     });
     return (
         <div hidden={!props.active}>
-            Choose an Attribute
-            <br/><br/>
+            <div className="title">Choose an Attribute</div>
+            <br/>
             {attributeHtml}
             <br/>
             <button onClick={props.onSelectionClick}>Cancel</button>

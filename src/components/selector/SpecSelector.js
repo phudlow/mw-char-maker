@@ -6,7 +6,7 @@ function SpecSelector(props) {
     return (
         <div hidden={!props.active}>
             <div className="title">Choose a Specialization</div>
-            <br/><br/>
+            <br/>
             <SpecElement name="combat"  onClick={props.onSelectionClick} />
             <SpecElement name="magic"   onClick={props.onSelectionClick} />
             <SpecElement name="stealth" onClick={props.onSelectionClick} />

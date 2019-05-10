@@ -7,12 +7,8 @@ import SelectorContainer from './components/selector/SelectorContainer';
 
 const initialState = {
   name: '',
-  // face: '',
-  // hair: '',
   sex: 'male',
   race: 'dark_elf',
-  // className: '',
-  // classDescription: '',
   specialization: 'combat',
   favoredAttributes: [
     'strength',
@@ -186,6 +182,7 @@ class App extends Component {
   render() {
     return (
       <div id="app">
+        <div id="main-title">Morrowind Character Creation Tool</div>
         <Form
           data={this.state}
           eventHandlers={this.eventHandlers}

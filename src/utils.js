@@ -34,15 +34,15 @@ function createSpecialsHtml(specials) {
     return (
         <div>
             {specials.abilities && specials.abilities.length ?
-                <div><div className="title">Abilities</div>{createHtmlForSpecialType(specials.abilities)}<br/></div> :
+                <div className="special-type-container"><div className="title">Abilities</div>{createHtmlForSpecialType(specials.abilities)}</div> :
                 null
             }
             {specials.powers && specials.powers.length ?
-                <div><div className="title">Powers</div>{createHtmlForSpecialType(specials.powers)}<br/></div> :
+                <div className="special-type-container"><div className="title">Powers</div>{createHtmlForSpecialType(specials.powers)}</div> :
                 null
             }
             {specials.spells && specials.spells.length ?
-                <div><div className="title">Spells</div>{createHtmlForSpecialType(specials.spells)}<br/></div> :
+                <div className="special-type-container"><div className="title">Spells</div>{createHtmlForSpecialType(specials.spells)}</div> :
                 null
             }
         </div>

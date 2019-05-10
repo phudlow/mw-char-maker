@@ -23,28 +23,57 @@ body {
 
   cursor: $cursor;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
   font-size: $font-size;
   font-family: Pelagiad;
 
   user-select: none;
+  height: 100vh;
 
   color: $regular-text-color;
   .title { color: $title-text-color }
 
-  background-color: black;
+  background-image: url(./img/background.jpg);
+  background-size: 100% 100%;
 }
 
-#form .hoverable:hover {
-  color: $title-text-color;
+#form {
+  .hoverable, .sex-selector {
+    &:hover {
+      color: $title-text-color;
+    }
+  }
 }
 
 // ------ //
 // Layout //
 // ------ //
-#app {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+#form, #result, #main-title {
+  margin: 20px;
+  padding: 15px;
+}
+
+#main-title {
+  font-size: 2em;
+}
+
+#result {
+  margin-top: 0;
+  width: 49em;
+}
+
+#form, #app {
+  border: 1px solid $regular-text-color;
+  background-color: rgba(0.5, 0.5, 0.5, 0.8);
+}
+
+#form {
+  background-color: black;
 }
 
 #form, #class-form, #result {
@@ -65,9 +94,8 @@ body {
   width: $column-width;
 }
 
-
 #person,
-#class-form > div:first-child,
+#class-form > div,
 #birthsign,
 .secondary-attributes,
 .primary-attributes,
@@ -77,16 +105,17 @@ body {
   margin-right: $column-side-margin;
 }
 
-#form, #result {
-  display: inline-block;
-  margin: 20px;
-  padding: 15px;
-  border: 1px solid $regular-text-color;
-  width: 49em;
-}
-
 span:not(:first-child) {
   float: right;
+}
+
+.sex-selector {
+  position: relative;
+  span {
+    position: absolute;
+    left: 3.5em;
+    top: -0.1em;
+  }
 }
 
 // ---------- //
@@ -149,6 +178,10 @@ input[type=text] {
 // -------- //
 // Specials //
 // -------- //
+.special-type-container:not(:last-child) {
+  margin-bottom: 1em; 
+}
+
 .special {
   div div {
     padding-top: 3px;
@@ -251,11 +284,11 @@ input[type=text] {
   > div {
     background-color: black;
     border: 2px solid $regular-text-color;
-    padding: 10px;
+    padding: 15px;
   }
 
   .hoverable:hover {
-    color: $title-text-color;
+    color: $title-text-color !important;
   }
 
   .skill-select-popup {

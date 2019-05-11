@@ -25,9 +25,9 @@ body {
 
   display: flex;
   justify-content: center;
-  align-items: center;
 
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   font-size: $font-size;
   font-family: Pelagiad;
@@ -37,7 +37,15 @@ body {
 
   color: $regular-text-color;
   .title { color: $title-text-color }
+}
 
+#background-holder {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: calc(100vw - 17px);
+  z-index: -1;
   background-image: url(./img/background.jpg);
   background-size: 100% 100%;
 }
@@ -53,13 +61,41 @@ body {
 // ------ //
 // Layout //
 // ------ //
+#app {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
 #form, #result, #main-title {
   margin: 20px;
   padding: 15px;
 }
 
+#result {
+  padding-right: 0;
+  min-height: 20em;
+}
+
 #main-title {
   font-size: 2em;
+  div {
+    float: right;
+    height: 1em;
+    width: 1em;
+    border: 2px solid $regular-text-color;
+    border-radius: 100%;
+    text-align: center;
+    vertical-align: bottom;
+    &:hover {
+      color: $title-text-color;
+      border: 2px solid $title-text-color;
+    }
+    span {
+      position: relative;
+      bottom: 0.03em;
+      left: 0.025em;
+    }
+  }
 }
 
 #result {
@@ -206,6 +242,10 @@ input[type=text] {
     color: $regular-text-color;
     text-align: left;
 
+    &.race .stats {
+      white-space: nowrap;
+    }
+
     .icon-header {
       height: 2.2em;
       .title {
@@ -223,7 +263,7 @@ input[type=text] {
       text-align: center;
     }
 
-    &.skill {
+    &.skill, &.primary-attribute, &.secondary-attribute {
       width: 23em;
     }
 
@@ -270,7 +310,7 @@ input[type=text] {
 // Selector Modals //
 // --------------- //
 .selector-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -279,7 +319,7 @@ input[type=text] {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: rgba(0.5, 0.5, 0.5, 0.5);
+  background-color: rgba(0.5, 0.5, 0.5, 0.8);
 
   > div {
     background-color: black;
@@ -296,6 +336,36 @@ input[type=text] {
       display: inline-block;
       text-align: left;
       width: 130px;
+    }
+  }
+
+  #help {
+    text-align: left;
+    position: relative;
+    min-width: 57.8em;
+    * {
+      vertical-align: top;
+    }
+    .how-to {
+      margin-bottom: 0;
+      padding: 5px 0 35px 0;
+      border-bottom: 1px solid $regular-text-color;
+    }
+    > div {
+      &:first-child {
+        padding-right: 15px;
+      }
+      &:nth-child(2) {
+        padding-left: 15px;
+        border-left: 1px solid $regular-text-color;
+      }
+      display: inline-block;
+      width: 28em;
+    }
+    button {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
     }
   }
 }

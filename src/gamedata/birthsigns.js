@@ -57,7 +57,6 @@ const birthsigns = {
         specials: {
             abilities: [{
                 name: 'Trollkin',
-                type: 'ability',
                 effects: [{
                     spell: 'weakness_to_fire',
                     text: 'Weakness to Fire 100%'
@@ -65,7 +64,7 @@ const birthsigns = {
             }],
             spells: [{
                 name: 'Blood of the North',
-                type: 'spell',
+                cost: 15,
                 effects: [{
                     spell: 'restore_health',
                     text: 'Restore Health 2 pts for 30 secs on Self'
@@ -80,7 +79,6 @@ const birthsigns = {
         specials: {
             abilities: [{
                 name: 'Mooncalf',
-                type: 'ability',
                 effects: [{
                     spell: 'fortify_attribute',
                     text: 'Fortify Agility 25 pts'
@@ -88,7 +86,6 @@ const birthsigns = {
             }],
             powers: [{
                 name: 'Lover\'s Kiss',
-                type: 'power',
                 effects: [{
                     spell: 'paralyze',
                     text: 'Paralyze for 60 secs on Target'
@@ -115,12 +112,14 @@ const birthsigns = {
         specials: {
             spells: [{
                 name: 'Blessed Word',
+                cost: 10,
                 effects: [{
                     spell: 'turn_undead',
                     text: 'Turn Undead 100 pts for 30 secs on Target'
                 }]
             }, {
                 name: 'Blessed Touch',
+                cost: 5,
                 effects: [{
                     spell: 'turn_undead',
                     text: 'Turn Undead 100 pts for 30 secs on Touch'
@@ -139,6 +138,7 @@ const birthsigns = {
         specials: {
             spells: [{
                 name: 'Star-Curse',
+                cost: 5,
                 effects: [{
                     spell: 'poison',
                     text: 'Poison 3 pts for 30 secs on Touch'
@@ -189,6 +189,7 @@ const birthsigns = {
         specials: {
             spells: [{
                 name: 'Beggar\'s Nose',
+                cost: 5,
                 effects: [{
                     spell: 'detect_animal',
                     text: 'Detect Animal for 60 secs in 200 ft'

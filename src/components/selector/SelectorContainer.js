@@ -5,6 +5,7 @@ import SpecSelector from './SpecSelector';
 import AttributeSelector from './AttributeSelector';
 import SkillSelector from './SkillSelector';
 import BirthsignSelector from './BirthsignSelector';
+import Help from './Help';
 
 function SelectorContainer(props) {
     const selectingFor = props.selecting && props.selecting.for;
@@ -29,6 +30,10 @@ function SelectorContainer(props) {
             <BirthsignSelector
                 active={selectingFor === 'birthsign'}
                 onSelectionClick={props.onSelectionClick}
+            />
+            <Help
+                active={selectingFor === 'help'}
+                onSelectionClick={props.onSelectionClick.bind(null, null, null)}
             />
         </div>
     );

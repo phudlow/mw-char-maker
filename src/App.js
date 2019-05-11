@@ -58,6 +58,7 @@ class App extends Component {
     };
 
     this.onSelectionClick                         = this.onSelectionClick.bind(this);
+    this.showHelp                                 = this.showHelp.bind(this);
     this.getNewStateFromSkillSelection            = this.getNewStateFromSkillSelection.bind(this);
     this.getNewStateFromFavoredAttributeSelection = this.getNewStateFromFavoredAttributeSelection.bind(this);
   }
@@ -66,19 +67,19 @@ class App extends Component {
       name: e.target.value
     });
   }
-  showRaceSelector(e) {
+  showRaceSelector() {
     this.setState({
       selecting: {
         for: 'race'
       }
     });
   }
-  changeSex(e) {
+  changeSex() {
     this.setState({
       sex: this.state.sex === 'male' ? 'female' : 'male'
     });
   }
-  showSpecializationSelector(e) {
+  showSpecializationSelector() {
     this.setState({
       selecting: {
         for: 'specialization'
@@ -101,15 +102,22 @@ class App extends Component {
       }
     });
   }
-  showBirthsignSelector(e) {
+  showBirthsignSelector() {
     this.setState({
       selecting: {
         for: 'birthsign'
       }
     });
   }
+  showHelp() {
+    this.setState({
+      selecting: {
+        for: 'help'
+      }
+    })
+  }
   onSelectionClick(e) {
-    const el        = e.target.closest('.hoverable');
+    const el        = e && e.target.closest('.hoverable');
     const value     = el && el.getAttribute('name');
     const selecting = this.state.selecting;
     const newState  = {
@@ -182,7 +190,11 @@ class App extends Component {
   render() {
     return (
       <div id="app">
-        <div id="main-title">Morrowind Character Creation Tool</div>
+        <div id="background-holder"></div>
+        <div id="main-title">
+          Morrowind Character Creation Tool
+          <div onClick={this.showHelp}><span>?</span></div>
+        </div>
         <Form
           data={this.state}
           eventHandlers={this.eventHandlers}

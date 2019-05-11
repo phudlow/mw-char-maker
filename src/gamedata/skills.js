@@ -8,7 +8,7 @@ const skills = {
     },
     athletics: {
         governingAttribute: 'speed',
-        description: 'Athletics skill trains and conditions one for running and swimming. Skilled athletes move short and long distances over land with speed and efficiency, and the also swim swiftly underwater.',
+        description: 'Athletics skill trains and conditions one for running and swimming. Skilled athletes move short and long distances over land with speed and efficiency, and they also swim swiftly underwater.',
         spec: 'combat'
     },
     axe: {
@@ -80,12 +80,12 @@ const skills = {
     },
     mysticism: {
         governingAttribute: 'willpower',
-        description: 'The spells of the College of Mysticism shape and focus otherworldly forces to bind sourls in gems, or teleport the caster\'s body, or manipulate the world with telekinesis, or absorb or reflect magical energies, or sense unseen objects at a distance.',
+        description: 'The spells of the College of Mysticism shape and focus otherworldly forces to bind souls in gems, or teleport the caster\'s body, or manipulate the world with telekinesis, or absorb or reflect magical energies, or sense unseen objects at a distance.',
         spec: 'magic'
     },
     restoration: {
         governingAttribute: 'willpower',
-        description: 'Adepts of the College of Restoration heal, restore, and fortify the body\'s attributes and abilities, cure disease, and protect ir from other malign influences. Restoration spells can also augment or absorb strength, endurance, intelligence, agility, and other bodily attributes.',
+        description: 'Adepts of the College of Restoration heal, restore, and fortify the body\'s attributes and abilities, cure disease, and protect it from other malign influences. Restoration spells can also augment or absorb strength, endurance, intelligence, agility, and other bodily attributes.',
         spec: 'magic'
     },
     unarmored: {
@@ -97,7 +97,7 @@ const skills = {
     // Stealth
     acrobatics: {
         governingAttribute: 'strength',
-        description: 'Acrobatics skill enables one to jump long distances and to aviod damage when falling from great heights. Nimble acrobats can reach areas others cannot get to and can direct their paths while falling.',
+        description: 'Acrobatics skill enables one to jump long distances and to avoid damage when falling from great heights. Nimble acrobats can reach areas others cannot get to and can direct their paths while falling.',
         spec: 'stealth'
     },
     "hand-to-hand": {

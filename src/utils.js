@@ -22,7 +22,7 @@ function createSpecialsHtml(specials) {
             });
             return (
                 <div className="special" key={special.name}>
-                    {special.name}
+                    {special.name}{typeof special.cost === 'undefined' ? null : ` (${special.cost})`}
                     <div>
                         {effectsHtml}
                     </div>

@@ -47,6 +47,7 @@ const races = {
             }],
             spells: [{
                 name: 'Water Breathing',
+                cost: 5,
                 effects: [{
                     spell: 'water_breathing',
                     text: 'Water Breathing for 120 secs on Self'
@@ -325,6 +326,7 @@ const races = {
             }],
             spells: [{
                 name: 'Eye of Night',
+                cost: 0,
                 effects: [{
                     spell: 'night_eye',
                     text: 'Night Eye 50 pts for 30 secs on Self'

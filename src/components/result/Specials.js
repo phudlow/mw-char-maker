@@ -43,8 +43,7 @@ class Specials extends Component {
         const specialsHtml = createSpecialsHtml(this.getSpecials());
 
         return (
-
-            <div>
+            <div id="specials">
                 {specialsHtml}
             </div>
         );

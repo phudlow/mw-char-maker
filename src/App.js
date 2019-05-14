@@ -5,8 +5,10 @@ import Form from './components/form/Form';
 import Result from './components/result/Result';
 import SelectorContainer from './components/selector/SelectorContainer';
 
+import { getInitialStateFromURL } from './utils';
+
 const initialState = {
-  name: '',
+  // name: '',
   sex: 'male',
   race: 'dark_elf',
   specialization: 'combat',
@@ -38,11 +40,13 @@ const initialState = {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = initialState;
+    this.state = Object.assign(initialState, getInitialStateFromURL());
+
+    this.setQueryStringFromState();
 
     this.eventHandlers = {
       person: {
-        onNameChange: this.changeName.bind(this),
+        // onNameChange: this.changeName.bind(this),
         onRaceClick: this.showRaceSelector.bind(this),
         onSexClick: this.changeSex.bind(this)
       },
@@ -61,12 +65,13 @@ class App extends Component {
     this.showHelp                                 = this.showHelp.bind(this);
     this.getNewStateFromSkillSelection            = this.getNewStateFromSkillSelection.bind(this);
     this.getNewStateFromFavoredAttributeSelection = this.getNewStateFromFavoredAttributeSelection.bind(this);
+    this.setQueryStringFromState                  = this.setQueryStringFromState.bind(this);
   }
-  changeName(e) {
-    this.setState({
-      name: e.target.value
-    });
-  }
+  // changeName(e) {
+  //   this.setState({
+  //     name: e.target.value
+  //   });
+  // }
   showRaceSelector() {
     this.setState({
       selecting: {
@@ -78,6 +83,7 @@ class App extends Component {
     this.setState({
       sex: this.state.sex === 'male' ? 'female' : 'male'
     });
+    this.setQueryStringFromState();
   }
   showSpecializationSelector() {
     this.setState({
@@ -116,6 +122,18 @@ class App extends Component {
       }
     })
   }
+  setQueryStringFromState() {
+    setTimeout(() => {
+      let queryStr = '';
+      for (let key in this.state) {
+        if (key === 'selecting') {
+          continue;
+        }
+        queryStr += `&${key}=${Array.isArray(this.state) ? this.state[key].join(',') : this.state[key]}`;
+      }
+      window.history.replaceState({}, '', `?${queryStr.substr(1)}`);
+    }, 0)
+  }
   onSelectionClick(e) {
     const el        = e && e.target.closest('.hoverable');
     const value     = el && el.getAttribute('name');
@@ -139,6 +157,7 @@ class App extends Component {
     }
 
     this.setState(newState);
+    this.setQueryStringFromState();
   }
   getNewStateFromFavoredAttributeSelection(value, selecting) {
     const index             = selecting.index;

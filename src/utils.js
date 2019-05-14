@@ -1,5 +1,46 @@
 import React from 'react';
 
+import races from './gamedata/races';
+import primaryAttributes from './gamedata/primaryAttributes';
+import skills from './gamedata/skills';
+import birthsigns from './gamedata/birthsigns';
+
+const validChoices = {
+    race: Object.keys(races),
+    sex: ['male', 'female'],
+    specialization: ['combat', 'magic', 'stealth'],
+    favoredAttributes: Object.keys(primaryAttributes),
+    majorSkills: Object.keys(skills),
+    minorSkills: Object.keys(skills),
+    birthsign: Object.keys(birthsigns)
+}
+
+function getInitialStateFromURL() {
+    const state = {};
+  
+    window.location.search.substr(1).split('&').forEach(str => {
+      let [ key, value ] = str.split('=');
+
+      if (!validChoices[key]) {
+        return;
+      } else if (value.includes(',')) {
+        value = value.split(',');
+        for (let i = 0; i < value.length; i++) {
+            if (validChoices[key].indexOf(value[i]) === -1) {
+                return;
+            }
+        }
+      } else if (validChoices[key].indexOf(value) === -1) {
+        return;
+      }
+
+      state[key] = value;
+    });
+  
+    return state;
+}
+
+
 function toPresentationStr(str) {
     return str.split('_')
               .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -50,6 +91,7 @@ function createSpecialsHtml(specials) {
 }
 
 export {
+    getInitialStateFromURL,
     toPresentationStr,
     createSpecialsHtml
 }

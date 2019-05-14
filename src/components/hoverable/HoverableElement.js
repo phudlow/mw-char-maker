@@ -13,14 +13,15 @@ class HoverableElement extends Component {
     }
 
     onMouseMove(e) {
-        const tip = e.target.closest('.hoverable').querySelector('.tooltip');
+        const tip      = e.target.closest('.hoverable').querySelector('.tooltip');
+        const forFixed = !!e.target.closest('.selector-container');
 
         document.querySelectorAll('.tooltip').forEach(tip => tip.hidden = true);
 
         if (tip) {
             tip.removeAttribute('hidden');
             tip.style.left = `${e.clientX + 25}px`;
-            tip.style.top  = `${e.clientY + window.scrollY}px`;
+            tip.style.top  = `${e.clientY + (forFixed ? 0 : window.scrollY)}px`;
         }
     }
     onMouseLeave(e) {

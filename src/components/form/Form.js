@@ -7,7 +7,6 @@ import Birthsign from './Birthsign';
 function Form(props) {
     return (
         <div id="form">
-            {/* <br/><br/> */}
             <Person
                 eventHandlers={props.eventHandlers.person}
                 name={props.data.name}

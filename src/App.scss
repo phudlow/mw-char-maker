@@ -86,6 +86,7 @@ body {
     border-radius: 100%;
     text-align: center;
     vertical-align: bottom;
+    background-color: black;
     &:hover {
       color: $title-text-color;
       border: 2px solid $title-text-color;
@@ -241,6 +242,7 @@ input[type=text] {
     border: 2px solid $regular-text-color;
     color: $regular-text-color;
     text-align: left;
+    z-index: 1;
 
     &.race .stats {
       white-space: nowrap;

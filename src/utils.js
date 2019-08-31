@@ -41,6 +41,21 @@ function getStateFromQueryString(str = window.location.search) {
             throw new Error('Invalid query string.');
         }
 
+        // Throw error if skill, or primary attribute appears twice
+        if (aspect.includes('Skill')) {
+            if (
+                state['majorSkills'] && state['majorSkills'].includes(value) ||
+                state['minorSkills'] && state['minorSkills'].includes(value)
+            ) {
+                throw new Error('Invalid query string.');
+            }
+        }
+        if (aspect === 'favoredAttributes') {
+            if (state['favoredAttributes'] && state['favoredAttributes'].includes(value)) {
+                throw new Error('Invalid query string.');
+            }
+        }
+
         // If aspect on state is array, push.
         if (Array.isArray(state[aspect])) {
             state[aspect].push(value);
@@ -58,6 +73,7 @@ function getStateFromQueryString(str = window.location.search) {
     return state;
 }
 
+// Serialize character aspects in a state to a concise query string
 function getQueryStringFromState(state) {
     let queryStr = '?build=';
 

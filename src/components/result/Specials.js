@@ -12,16 +12,15 @@ class Specials extends Component {
         this.getSpecials = this.getSpecials.bind(this);
     }
     getSpecials() {
-        const raceSpecials        = races[this.props.race].specials;
-        const birthsignSpecials   = birthsigns[this.props.birthsign].specials;
-
-        const chosenSkills = this.props.chosenSkills;
-        const magicSchoolSpells   = Object.keys(startingSpellsBySchool).reduce((acc, school) => {
+        const raceSpecials      = races[this.props.race].specials;
+        const birthsignSpecials = birthsigns[this.props.birthsign].specials;
+        const chosenSkills      = this.props.chosenSkills;
+        const magicSchoolSpells = Object.keys(startingSpellsBySchool).reduce((acc, school) => {
             if (chosenSkills.indexOf(school) !== -1) {
                 return Array.prototype.concat(acc, startingSpellsBySchool[school].spells)
             }
             return acc;
-        }, [])
+        }, []);
 
         return {
             abilities: Array.prototype.concat(

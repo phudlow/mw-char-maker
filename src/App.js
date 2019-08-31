@@ -6,6 +6,7 @@ import SelectorContainer from './components/selector/SelectorContainer';
 
 import { getStateFromQueryString, getQueryStringFromState } from './utils';
 
+// Default state describing default character aspect selections
 const initialState = {
   race: 'dark_elf',
   sex: 'male',
@@ -39,18 +40,22 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    // Set initial state from url query string. Use default character is queryString is invalid.
-    const queryStr = window.location.search;
+    // Set initial state from query string. Use default character aspects if query string is invalid.
     try {
-      this.state = Object.assign(initialState, getStateFromQueryString(queryStr));
+      const queryStr = window.location.search;
+      if (queryStr) {
+        this.state = Object.assign(initialState, getStateFromQueryString(queryStr));
+      }
     }
     catch (e) {
       console.warn('Invalid query string provided.  Using default character.');
-      this.state = initialState;
     }
-
-    // Set query string from state, even if it was provided, incase it was incomplete
-    this.setQueryStringFromState(this.state);
+    finally {
+      if (!this.state) {
+        this.state = initialState;
+        this.setQueryStringFromState(this.state);
+      }
+    }
 
     this.eventHandlers = {
       person: {
@@ -72,14 +77,10 @@ class App extends Component {
     this.showHelp         = this.showHelp.bind(this);
   }
   onShowSelector(aspect, e) {
-    let target = e.target, index;
-    while (!target.classList.contains('hoverable')) {
-      target = target.parentNode;
-    }
     this.setState({
       selecting: {
         aspect,
-        index: target.getAttribute('index')
+        index: e.target.closest('.hoverable').getAttribute('index')
       }
     });
   }
@@ -92,7 +93,7 @@ class App extends Component {
   showHelp() {
     this.setState({
       selecting: {
-        for: 'help'
+        aspect: 'help'
       }
     })
   }
@@ -110,17 +111,15 @@ class App extends Component {
     };
 
     if (value) {
-
       if (selecting.aspect.includes('Skill')) {
         Object.assign(newState, this.getNewStateFromSkillSelection(value, selecting));
       }
-      else if (selecting.aspect === 'favoredAttribute') {
+      else if (selecting.aspect === 'favoredAttributes') {
         Object.assign(newState, this.getNewStateFromFavoredAttributeSelection(value, selecting));
       }
       else {
         newState[selecting.aspect] = value;
       }
-
     }
 
     this.setState(newState);

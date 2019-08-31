@@ -20,7 +20,7 @@ function SelectorContainer(props) {
                 onSelectionClick={props.onSelectionClick}
             />
             <AttributeSelector
-                active={selectingFor === 'favoredAttribute'}
+                active={selectingFor === 'favoredAttributes'}
                 onSelectionClick={props.onSelectionClick}
             />
             <SkillSelector

@@ -14,32 +14,77 @@ const validChoices = {
     minorSkills: Object.keys(skills),
     birthsign: Object.keys(birthsigns)
 }
+const buildOrder = [
+    'race',
+    'sex',
+    'specialization',
+    ...Array(2).fill('favoredAttributes'),
+    ...Array(5).fill('majorSkills'),
+    ...Array(5).fill('minorSkills'),
+    'birthsign'
+];
 
-function getInitialStateFromURL() {
+// Convert "build" value on a query string to a parsed state object representing character aspects.
+// During parsing of the "build" string, the buildOrder array is referenced to determine what key
+// in the state that char represents.
+function getStateFromQueryString(str = window.location.search) {
     const state = {};
-  
-    window.location.search.substr(1).split('&').forEach(str => {
-      let [ key, value ] = str.split('=');
+    const build = str.substr(1).split('=')[1];
+    let buildChar, aspect, value, lastAspect;
 
-      if (!validChoices[key]) {
-        return;
-      } else if (value.includes(',')) {
-        value = value.split(',');
-        for (let i = 0; i < value.length; i++) {
-            if (validChoices[key].indexOf(value[i]) === -1) {
-                return;
-            }
+    for (let i = 0; i < build.length; i++) {
+        buildChar = build[i];
+        aspect = buildOrder[i];
+        value = validChoices[aspect][parseInt(buildChar, 36)];
+
+        if (!value) {
+            throw new Error('Invalid query string.');
         }
-      } else if (validChoices[key].indexOf(value) === -1) {
-        return;
-      }
 
-      state[key] = value;
-    });
-  
+        // If aspect on state is array, push.
+        if (Array.isArray(state[aspect])) {
+            state[aspect].push(value);
+        }
+        // If aspect isn't array and repeating last aspect, make aspect into array
+        else if (lastAspect && lastAspect === aspect) {
+            state[aspect] = [state[aspect], value];
+        }
+        // Normal case, state is a single value string
+        else {
+            state[aspect] = value;
+        }
+        lastAspect = aspect;
+    }
     return state;
 }
 
+function getQueryStringFromState(state) {
+    let queryStr = '?build=';
+
+    for (let key in state) {
+        switch (key) {
+
+            // selecting is a UI state, we don't care about it
+            case 'selecting':
+                break;
+
+            // state member is an array, iterate through
+            case 'favoredAttributes':
+            case 'majorSkills':
+            case 'minorSkills':
+                state[key].forEach(aspect => {
+                    queryStr += validChoices[key].indexOf(aspect).toString(36);
+                });
+                break;
+
+            // regular string case
+            default:
+                queryStr += validChoices[key].indexOf(state[key]).toString(36);
+                break;
+        }
+    }
+    return queryStr;
+}
 
 function toPresentationStr(str) {
     return str.split('_')
@@ -91,7 +136,8 @@ function createSpecialsHtml(specials) {
 }
 
 export {
-    getInitialStateFromURL,
+    getStateFromQueryString,
+    getQueryStringFromState,
     toPresentationStr,
     createSpecialsHtml
 }

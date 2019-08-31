@@ -11,6 +11,7 @@
   },
   "scripts": {
     "webpack:build": "webpack --mode=production",
+    "webpack:build-dev": "webpack --mode=development",
     "webpack:watch": "webpack --watch --mode=development",
     "webpack-dev-server": "webpack-dev-server --open --mode=development"
   },

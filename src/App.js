@@ -5,12 +5,11 @@ import Form from './components/form/Form';
 import Result from './components/result/Result';
 import SelectorContainer from './components/selector/SelectorContainer';
 
-import { getInitialStateFromURL } from './utils';
+import { getStateFromQueryString, getQueryStringFromState } from './utils';
 
 const initialState = {
-  // name: '',
-  sex: 'male',
   race: 'dark_elf',
+  sex: 'male',
   specialization: 'combat',
   favoredAttributes: [
     'strength',
@@ -40,13 +39,22 @@ const initialState = {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign(initialState, getInitialStateFromURL());
 
-    this.setQueryStringFromState();
+    // Set initial state from url query string. Use default character is queryString is invalid.
+    const queryStr = window.location.search;
+    try {
+      this.state = Object.assign(initialState, getStateFromQueryString(queryStr));
+    }
+    catch (e) {
+      console.warn('Invalid query string provided.  Using default character.');
+      this.state = initialState;
+    }
+
+    // Set query string from state, even if it was provided, incase it was incomplete
+    this.setQueryStringFromState(this.state);
 
     this.eventHandlers = {
       person: {
-        // onNameChange: this.changeName.bind(this),
         onRaceClick: this.showRaceSelector.bind(this),
         onSexClick: this.changeSex.bind(this)
       },
@@ -65,13 +73,7 @@ class App extends Component {
     this.showHelp                                 = this.showHelp.bind(this);
     this.getNewStateFromSkillSelection            = this.getNewStateFromSkillSelection.bind(this);
     this.getNewStateFromFavoredAttributeSelection = this.getNewStateFromFavoredAttributeSelection.bind(this);
-    this.setQueryStringFromState                  = this.setQueryStringFromState.bind(this);
   }
-  // changeName(e) {
-  //   this.setState({
-  //     name: e.target.value
-  //   });
-  // }
   showRaceSelector() {
     this.setState({
       selecting: {
@@ -124,15 +126,8 @@ class App extends Component {
   }
   setQueryStringFromState() {
     setTimeout(() => {
-      let queryStr = '';
-      for (let key in this.state) {
-        if (key === 'selecting') {
-          continue;
-        }
-        queryStr += `&${key}=${Array.isArray(this.state) ? this.state[key].join(',') : this.state[key]}`;
-      }
-      window.history.replaceState({}, '', `?${queryStr.substr(1)}`);
-    }, 0)
+      window.history.replaceState({}, '', getQueryStringFromState(this.state));
+    }, 0);
   }
   onSelectionClick(e) {
     const el        = e && e.target.closest('.hoverable');

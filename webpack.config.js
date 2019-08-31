@@ -25,7 +25,10 @@ const common = {
     plugins: [
         new webpack.ProgressPlugin(),
         new CleanWebpackPlugin(),
-        new HTMLWebpackPlugin({ template: path.resolve(__dirname, 'public/index.html') })
+        new HTMLWebpackPlugin({
+            template: path.resolve(__dirname, 'public/index.html'),
+            favicon: 'public/favicon.ico'
+        })
     ],
     watchOptions: {
         ignored: ['node_modules']

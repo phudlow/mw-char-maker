@@ -8,7 +8,7 @@ import BirthsignSelector from './BirthsignSelector';
 import Help from './Help';
 
 function SelectorContainer(props) {
-    const selectingFor = props.selecting && props.selecting.for;
+    const selectingFor = props.selecting && props.selecting.aspect;
     return (
         <div className="selector-container" style={{display: selectingFor ? 'flex' : 'none'}}>
             <RaceSelector 

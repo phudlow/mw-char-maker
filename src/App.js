@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.scss';
 
 import Form from './components/form/Form';
 import Result from './components/result/Result';
@@ -31,8 +30,8 @@ const initialState = {
   ],
   birthsign: 'apprentice',
 
-  // If selecting, an object which holds "for" and "index" info about what is being selected
-  // Example: selecting: { for: 'majorSkills', index: 1 }
+  // If selecting, an object which holds "aspect" and "index" info about what is being selected
+  // Example: selecting: { aspect: 'majorSkills', index: 1 }
   selecting: null,
 }
 
@@ -55,29 +54,32 @@ class App extends Component {
 
     this.eventHandlers = {
       person: {
-        onRaceClick: this.showRaceSelector.bind(this),
+        onRaceClick: this.onShowSelector.bind(this, 'race'),
         onSexClick: this.changeSex.bind(this)
       },
       class: {
-        onSpecializationClick:   this.showSpecializationSelector.bind(this),
-        onFavoredAttributeClick: this.showFavoredAttributeSelector.bind(this),
-        onMajorSkillClick:       this.showSkillSelector.bind(this, 'major'),
-        onMinorSkillClick:       this.showSkillSelector.bind(this, 'minor'),
+        onSpecializationClick:   this.onShowSelector.bind(this, 'specialization'),
+        onFavoredAttributeClick: this.onShowSelector.bind(this, 'favoredAttributes'),
+        onMajorSkillClick:       this.onShowSelector.bind(this, 'majorSkills'),
+        onMinorSkillClick:       this.onShowSelector.bind(this, 'minorSkills'),
       },
       birthsign: {
-        onBirthsignClick: this.showBirthsignSelector.bind(this) 
+        onBirthsignClick: this.onShowSelector.bind(this, 'birthsign')
       }
     };
 
-    this.onSelectionClick                         = this.onSelectionClick.bind(this);
-    this.showHelp                                 = this.showHelp.bind(this);
-    this.getNewStateFromSkillSelection            = this.getNewStateFromSkillSelection.bind(this);
-    this.getNewStateFromFavoredAttributeSelection = this.getNewStateFromFavoredAttributeSelection.bind(this);
+    this.onSelectionClick = this.onSelectionClick.bind(this);
+    this.showHelp         = this.showHelp.bind(this);
   }
-  showRaceSelector() {
+  onShowSelector(aspect, e) {
+    let target = e.target, index;
+    while (!target.classList.contains('hoverable')) {
+      target = target.parentNode;
+    }
     this.setState({
       selecting: {
-        for: 'race'
+        aspect,
+        index: target.getAttribute('index')
       }
     });
   }
@@ -86,36 +88,6 @@ class App extends Component {
       sex: this.state.sex === 'male' ? 'female' : 'male'
     });
     this.setQueryStringFromState();
-  }
-  showSpecializationSelector() {
-    this.setState({
-      selecting: {
-        for: 'specialization'
-      }
-    });
-  }
-  showFavoredAttributeSelector(e) {
-    this.setState({
-      selecting: {
-        for: 'favoredAttribute',
-        index: e.target.closest('.hoverable').getAttribute('index')
-      }
-    });
-  }
-  showSkillSelector(type, e) {
-    this.setState({
-      selecting: {
-        for: `${type}Skills`,
-        index: e.target.closest('.hoverable').getAttribute('index')
-      }
-    });
-  }
-  showBirthsignSelector() {
-    this.setState({
-      selecting: {
-        for: 'birthsign'
-      }
-    });
   }
   showHelp() {
     this.setState({
@@ -139,14 +111,14 @@ class App extends Component {
 
     if (value) {
 
-      if (selecting.for.includes('Skill')) {
+      if (selecting.aspect.includes('Skill')) {
         Object.assign(newState, this.getNewStateFromSkillSelection(value, selecting));
       }
-      else if (selecting.for === 'favoredAttribute') {
+      else if (selecting.aspect === 'favoredAttribute') {
         Object.assign(newState, this.getNewStateFromFavoredAttributeSelection(value, selecting));
       }
       else {
-        newState[selecting.for] = value;
+        newState[selecting.aspect] = value;
       }
 
     }
@@ -175,7 +147,7 @@ class App extends Component {
   }
   getNewStateFromSkillSelection(value, selecting) {
     const index       = selecting.index;
-    const prevValue   = this.state[selecting.for][index];
+    const prevValue   = this.state[selecting.aspect][index];
     const majorSkills = this.state.majorSkills.slice(0);
     const minorSkills = this.state.minorSkills.slice(0);
     let currentSkillIndex;
@@ -189,7 +161,7 @@ class App extends Component {
       minorSkills[currentSkillIndex] = prevValue;
     }
 
-    if (selecting.for === 'majorSkills') {
+    if (selecting.aspect === 'majorSkills') {
       majorSkills[index] = value;
     }
     else {

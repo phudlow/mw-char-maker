@@ -8,25 +8,28 @@ import HoverableElement from './HoverableElement';
 class RaceElement extends HoverableElement {
 
     getTooltip() {
+        const specialsHtml = createSpecialsHtml(races[this.props.name].specials)
+        const raceSkills   = Object.keys(races[this.props.name].skills);
+        const skillsHtml   = raceSkills.map(skill => {
+            return (
+                <div key={skill}>
+                    <span>{toPresentationStr(skill)}</span>
+                    <span>{races[this.props.name].skills[skill]}</span>
+                </div>
+            )
+        });
+
         return (
             <div className="tooltip race" hidden>
-                <div className="title">{toPresentationStr(this.props.name)}</div>
-                {/* <br/> */}
-                {/* <div>{races[this.props.name].description}</div> */}
-                <br/>
+                <div className="title">{toPresentationStr(this.props.name)}</div><br/>
                 <div className="stats">
                     <div>
                         <div className="title">Skill Bonuses</div>
-                        {Object.keys(races[this.props.name].skills).map(skill => {
-                            return (
-                                <div key={skill}>
-                                    <span>{toPresentationStr(skill)}</span>
-                                    <span>{races[this.props.name].skills[skill]}</span>                                    
-                                </div>
-                            )
-                        })}
+                        {skillsHtml}
                     </div>
-                    <div>{createSpecialsHtml(races[this.props.name].specials)}</div>
+                    <div>
+                        {specialsHtml}
+                    </div>
                 </div>
             </div>
         );

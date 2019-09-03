@@ -12,13 +12,12 @@
 // ------ //
 $title-text-color   : rgb(223, 201, 159);
 $regular-text-color : rgb(202, 165, 96);
-$font-size          : 14pt;
+$font-size          : 20px;
 $cursor             : url(./img/cursor.png) 0 0, auto;
 $column-width       : 150px;
 $column-side-margin : 20px;
 
 body {
-  border: 0;
   margin: 0;
 
   cursor: $cursor;
@@ -190,7 +189,7 @@ input[type=text] {
     width: 70px;
     text-align: center;
   }
-  .health  { 
+  .health  {
     background: #9d3018; /* Old browsers */
     background: -moz-linear-gradient(top, #9d3018 1%, #9e2f18 15%, #2d0e07 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top, #9d3018 1%,#9e2f18 15%,#2d0e07 100%); /* Chrome10-25,Safari5.1-6 */
@@ -217,7 +216,7 @@ input[type=text] {
 // Specials //
 // -------- //
 .special-type-container:not(:last-child) {
-  margin-bottom: 1em; 
+  margin-bottom: 1em;
 }
 
 .special {

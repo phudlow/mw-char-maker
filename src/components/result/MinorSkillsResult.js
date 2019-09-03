@@ -3,11 +3,8 @@ import React from 'react';
 import SkillElement from '../hoverable/SkillElement';
 
 function MinorSkillsResult(props) {
-    const skillElements = [];
-    Object.keys(props.skills).forEach(skill => {
-        skillElements.push(
-            <SkillElement key={skill} value={props.skills[skill]} name={skill} />
-        );
+    const skillElements = Object.keys(props.skills).map(skill => {
+        return <SkillElement key={skill} value={props.skills[skill]} name={skill} />;
     });
     return (
         <div className="minor-skills-result">

@@ -37,7 +37,7 @@ class Result extends Component {
         return attributes;
     }
     getMagickaMultiplier() {
-        return 1 + 
+        return 1 +
                (races[this.props.data.race].magickaMultiplier || 0 ) +
                (birthsigns[this.props.data.birthsign].magickaMultiplier || 0);
     }
@@ -64,7 +64,7 @@ class Result extends Component {
 
         const majorSkills = this.props.data.majorSkills.reduce(gatherValues, {});
         const minorSkills = this.props.data.minorSkills.reduce(gatherValues, {});
-        
+
         return {
             majorSkills,
             minorSkills,
@@ -74,10 +74,10 @@ class Result extends Component {
     render() {
         const primaryAttributes = this.getPrimaryAttributes();
         const skillValues       = this.getSkillValues();
+
         return (
             <div id="result">
                 <div>
-                    {/*Secondary Attributes*/}
                     <SecondaryAttributes
                         strength={primaryAttributes.strength}
                         intelligence={primaryAttributes.intelligence}
@@ -90,7 +90,6 @@ class Result extends Component {
                         magickaMultiplier={this.getMagickaMultiplier()}
                     />
                     <br/>
-                    {/*Primary Attributes*/}
                     <PrimaryAttributes
                        strength={primaryAttributes.strength}
                        intelligence={primaryAttributes.intelligence}
@@ -103,21 +102,17 @@ class Result extends Component {
                     />
                 </div>
                 <div>
-                    {/*Major Skills*/}
                     <MajorSkillsResult
                         skills={skillValues.majorSkills}
                     />
                     <br/>
-                    {/*Minor Skills*/}
                     <MinorSkillsResult
                         skills={skillValues.minorSkills}
                     />
                 </div>
-                {/*Misc Skills*/}
                 <MiscSkillsResult
                     skills={skillValues.miscSkills}
                 />
-                {/*Specials*/}
                 <Specials
                     race={this.props.data.race}
                     birthsign={this.props.data.birthsign}

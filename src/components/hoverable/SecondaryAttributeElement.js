@@ -20,13 +20,18 @@ class SecondaryAttributeElement extends HoverableElement {
         );
     }
     getTooltip() {
+        const imgSrc = require(`../../img/icons/secondaryAttributes/${this.props.name}.png`);
+        const description = secondaryAttributes[this.props.name].description;
+
         return (
             <div className="tooltip secondary-attribute" hidden>
                 <div className="icon-header">
-                    <img src={require(`../../img/icons/secondaryAttributes/${this.props.name}.png`)} alt="" />
-                    <div>{secondaryAttributes[this.props.name].description}</div>
+                    <img src={imgSrc} alt="" />
+                    <div>{description}</div>
                     <br/>
-                    <div className="value">{this.props.value} / {this.props.value}</div>
+                    <div className="value">
+                        {this.props.value} / {this.props.value}
+                    </div>
                 </div>
             </div>
         );

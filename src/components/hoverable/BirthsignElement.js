@@ -10,11 +10,12 @@ class BirthsignElement extends HoverableElement {
         return `The ${super.getFormattedName()}`;
     }
     getTooltip() {
+        const specialsHtml = createSpecialsHtml(birthsigns[this.props.name].specials);
         return (
             <div className="tooltip" hidden>
                 <div className="title">{this.getFormattedName()}</div>
                 <br/>
-                {createSpecialsHtml(birthsigns[this.props.name].specials)}
+                {specialsHtml}
             </div>
         );
     }

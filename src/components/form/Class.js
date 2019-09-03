@@ -9,7 +9,7 @@ function Class(props) {
         <div id="class-form">
             <div>
                 <div className="title">Specialization</div>
-                <SpecElement 
+                <SpecElement
                     name={props.specialization}
                     onClick={props.eventHandlers.onSpecializationClick}
                 />

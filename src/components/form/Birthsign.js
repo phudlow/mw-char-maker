@@ -6,7 +6,10 @@ function Birthsign(props) {
     return (
         <div id="birthsign">
             <div className="title">Birthsign</div>
-            <BirthsignElement name={props.birthsign} onClick={props.eventHandlers.onBirthsignClick} />
+            <BirthsignElement
+                name={props.birthsign}
+                onClick={props.eventHandlers.onBirthsignClick}
+            />
         </div>
     );
 }

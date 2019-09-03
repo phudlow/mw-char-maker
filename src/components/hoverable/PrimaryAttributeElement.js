@@ -7,13 +7,16 @@ import HoverableElement from './HoverableElement';
 
 class PrimaryAttributeElement extends HoverableElement {
     getTooltip() {
+        const imgSrc = require(`../../img/icons/primaryAttributes/${this.props.name}.png`);
+        const description = primaryAttributes[this.props.name].description;
+
         return (
             <div className="tooltip primary-attribute" hidden>
                 <div className="icon-header">
-                    <img src={require(`../../img/icons/primaryAttributes/${this.props.name}.png`)} alt="" />
+                    <img src={imgSrc} alt="" />
                     <div className="title">{toPresentationStr(this.props.name)}</div>
                 </div>
-                <div>{primaryAttributes[this.props.name].description}</div>
+                <div>{description}</div>
             </div>
         );
     }

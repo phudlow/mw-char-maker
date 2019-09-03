@@ -11,12 +11,12 @@ function SelectorContainer(props) {
     const selectingFor = props.selecting && props.selecting.aspect;
     return (
         <div className="selector-container" style={{display: selectingFor ? 'flex' : 'none'}}>
-            <RaceSelector 
+            <RaceSelector
                 active={selectingFor === 'race'}
                 onSelectionClick={props.onSelectionClick}
             />
-            <SpecSelector 
-                active={selectingFor === 'specialization'} 
+            <SpecSelector
+                active={selectingFor === 'specialization'}
                 onSelectionClick={props.onSelectionClick}
             />
             <AttributeSelector

@@ -70,7 +70,7 @@ const skills = {
     },
     enchant: {
         governingAttribute: 'intelligence',
-        description: 'This skill governs the creation, use, and recharging of enchanted items. Skilled enchanters are more successful at creating new items. Enchanted items burn less power, and are recharged more effeciently from soul gems, for a trained user.',
+        description: 'This skill governs the creation, use, and recharging of enchanted items. Skilled enchanters are more successful at creating new items. Enchanted items burn less power, and are recharged more efficiently from soul gems, for a trained user.',
         spec: 'magic'
     },
     illusion: {
@@ -127,7 +127,7 @@ const skills = {
     },
     security: {
         governingAttribute: 'intelligence',
-        description: 'Security skill lets one open locked doors and containers with lock-picks or disarm traps with probes, This skill is essential for agents and thieves alike.',
+        description: 'Security skill lets one open locked doors and containers with lock-picks or disarm traps with probes. This skill is essential for agents and thieves alike.',
         spec: 'stealth'
     },
     sneak: {

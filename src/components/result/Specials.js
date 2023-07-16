@@ -14,13 +14,6 @@ class Specials extends Component {
     getSpecials() {
         const raceSpecials      = races[this.props.race].specials;
         const birthsignSpecials = birthsigns[this.props.birthsign].specials;
-        const chosenSkills      = this.props.chosenSkills;
-        const magicSchoolSpells = Object.keys(startingSpellsBySchool).reduce((acc, school) => {
-            if (chosenSkills.indexOf(school) !== -1) {
-                return Array.prototype.concat(acc, startingSpellsBySchool[school].spells)
-            }
-            return acc;
-        }, []);
 
         return {
             abilities: Array.prototype.concat(
@@ -34,9 +27,34 @@ class Specials extends Component {
             spells: Array.prototype.concat(
                 raceSpecials.spells         || [],
                 birthsignSpecials.spells    || [],
-                magicSchoolSpells
+                this.getStartingSpellsFromSkillValues(),
             )
         }
+    }
+    getStartingSpellsFromSkillValues() {
+        const skillValues = this.props.skillValues;
+        const startingSpells = [];
+
+        for (let skillAssignment in skillValues) {
+            for (let skillName in skillValues[skillAssignment]) {
+                const skillValue = skillValues[skillAssignment][skillName];
+                const startingSpellsInSchool = startingSpellsBySchool[skillName]?.spells
+                startingSpellsInSchool?.forEach(spell => {
+                    if (spell.requiredSkill <= this.calcForStartingSpellsFromSpellSchoolSkillValue(skillValue)) {
+                        startingSpells.push(spell);
+                    }
+                });
+            }
+        }
+
+        return startingSpells;
+    }
+    calcForStartingSpellsFromSpellSchoolSkillValue(skillValue) {
+        const primaryAttributes = this.props.primaryAttributes;
+        const willpower         = primaryAttributes.willpower;
+        const luck              = primaryAttributes.luck;
+
+        return skillValue * 2 + willpower / 5 + luck / 10;
     }
     render() {
         const specialsHtml = createSpecialsHtml(this.getSpecials());

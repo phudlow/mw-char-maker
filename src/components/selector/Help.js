@@ -50,7 +50,7 @@ function Help(props) {
                 <br/>
                 <div>
                     <div className="title">Major and Minor Skills</div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;+25 to major skills and +10 to minor skills.  When a spell school is chosen as a major or minor skill, the character begins with spells from that school.
+                    &nbsp;&nbsp;&nbsp;&nbsp;+25 to major skills and +10 to minor skills.  A character may start with spells from a school of magic, if their starting skill level is high enough.
                 </div>
                 <br/>
                 <div>

@@ -116,12 +116,8 @@ class Result extends Component {
                 <Specials
                     race={this.props.data.race}
                     birthsign={this.props.data.birthsign}
-                    chosenSkills={
-                        Array.prototype.concat(
-                            Object.keys(skillValues.minorSkills),
-                            Object.keys(skillValues.majorSkills)
-                        )
-                    }
+                    primaryAttributes={primaryAttributes}
+                    skillValues={skillValues}
                 />
             </div>
         );

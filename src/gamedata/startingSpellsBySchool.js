@@ -1,6 +1,7 @@
 const startingSpellsBySchool = {
     alteration: {
         spells: [{
+            requiredSkill: 65,
             name: 'Shield',
             cost: 15,
             effects: [{
@@ -8,6 +9,7 @@ const startingSpellsBySchool = {
                 text: 'Shield 5 pts for 30 secs on Self'
             }]
         }, {
+            requiredSkill: 59,
             name: 'Water Walking',
             cost: 9,
             effects: [{
@@ -18,6 +20,7 @@ const startingSpellsBySchool = {
     },
     conjuration: {
         spells: [{
+            requiredSkill: 56,
             name: 'Bound Dagger',
             cost: 6,
             effects: [{
@@ -25,6 +28,7 @@ const startingSpellsBySchool = {
                 text: 'Bound Dagger for 60 secs on Self'
             }]
         }, {
+            requiredSkill: 71,
             name: 'Summon Ancestral Ghost',
             cost: 21,
             effects: [{
@@ -35,6 +39,7 @@ const startingSpellsBySchool = {
     },
     destruction: {
         spells: [{
+            requiredSkill: 56,
             name: 'Fire Bite',
             cost: 6,
             effects: [{
@@ -45,6 +50,7 @@ const startingSpellsBySchool = {
     },
     illusion: {
         spells: [{
+            requiredSkill: 65,
             name: 'Chameleon',
             cost: 15,
             effects: [{
@@ -52,6 +58,7 @@ const startingSpellsBySchool = {
                 text: 'Chameleon 10 pts for 30 secs on Self'
             }]
         }, {
+            requiredSkill: 65,
             name: 'Sanctuary',
             cost: 15,
             effects: [{
@@ -62,6 +69,7 @@ const startingSpellsBySchool = {
     },
     mysticism: {
         spells: [{
+            requiredSkill: 69,
             name: 'Detect Creature',
             cost: 19,
             effects: [{
@@ -72,6 +80,7 @@ const startingSpellsBySchool = {
     },
     restoration: {
         spells: [{
+            requiredSkill: 63,
             name: 'Hearth Heal',
             cost: 13,
             effects: [{

@@ -10,7 +10,14 @@ import Help from './Help';
 function SelectorContainer(props) {
     const selectingFor = props.selecting && props.selecting.aspect;
     return (
-        <div className="selector-container" style={{display: selectingFor ? 'flex' : 'none'}}>
+        <div
+            className="selector-container"
+            style={{display: selectingFor ? 'flex' : 'none'}}
+            onClick={(e) => {
+                e.target.className.includes("selector-container") &&
+                props.onSelectionClick(null, null, null);
+            }
+        }>
             <RaceSelector
                 active={selectingFor === 'race'}
                 onSelectionClick={props.onSelectionClick}

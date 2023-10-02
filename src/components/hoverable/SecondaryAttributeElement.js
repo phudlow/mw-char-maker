@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { toPresentationStr } from '../../utils.js';
+import { toPresentationStr } from '../../utils'
 import secondaryAttributes from '../../gamedata/secondaryAttributes';
 
 import HoverableElement from './HoverableElement';
@@ -20,7 +20,7 @@ class SecondaryAttributeElement extends HoverableElement {
         );
     }
     getTooltip() {
-        const imgSrc = require(`../../img/icons/secondaryAttributes/${this.props.name}.png`);
+        const imgSrc = `/src/img/icons/secondaryAttributes/${this.props.name}.png`;
         const description = secondaryAttributes[this.props.name].description;
 
         return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { toPresentationStr } from '../../utils.js';
+import { toPresentationStr } from '../../utils'
 import skills from '../../gamedata/skills';
 
 import HoverableElement from './HoverableElement';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import races from '../../gamedata/races.js';
+import races from '../../gamedata/races'
 
 import RaceElement from '../hoverable/RaceElement';
 

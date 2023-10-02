@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { toPresentationStr } from '../../utils.js';
+import { toPresentationStr } from '../../utils'
 
 class HoverableElement extends Component {
     constructor(props) {

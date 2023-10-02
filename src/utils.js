@@ -115,7 +115,7 @@ function createSpecialsHtml(specials) {
                 return (
                     <div key={effect.text}>
                         <img
-                            src={require(`./img/icons/spells/${effect.spell}.png`)}
+                            src={`/src/img/icons/spells/${effect.spell}.png`}
                             alt=''
                         />
                         {effect.text}

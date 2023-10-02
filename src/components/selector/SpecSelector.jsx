@@ -1,5 +1,3 @@
-import React from 'react';
-
 import SpecElement from '../hoverable/SpecElement';
 
 function SpecSelector(props) {

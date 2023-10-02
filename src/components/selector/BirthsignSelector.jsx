@@ -1,5 +1,3 @@
-import React from 'react';
-
 import birthsigns from '../../gamedata/birthsigns'
 
 import BirthsignElement from '../hoverable/BirthsignElement';

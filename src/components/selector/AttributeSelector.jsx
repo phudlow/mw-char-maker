@@ -1,5 +1,3 @@
-import React from 'react';
-
 import primaryAttributes from '../../gamedata/primaryAttributes';
 
 import PrimaryAttributeElement from '../hoverable/PrimaryAttributeElement';

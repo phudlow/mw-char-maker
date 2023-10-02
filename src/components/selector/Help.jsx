@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Help(props) {
     return (
         <div id="help" hidden={!props.active}>

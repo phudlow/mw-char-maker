@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Person from './Person';
 import Class from './Class';
 import Birthsign from './Birthsign';

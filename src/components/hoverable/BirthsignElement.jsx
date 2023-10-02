@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { createSpecialsHtml } from '../../utils';
 import birthsigns from '../../gamedata/birthsigns';
 

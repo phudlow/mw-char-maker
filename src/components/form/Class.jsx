@@ -1,5 +1,3 @@
-import React from 'react';
-
 import SpecElement from '../hoverable/SpecElement';
 import PrimaryAttributeElement from '../hoverable/PrimaryAttributeElement';
 import SkillElement from '../hoverable/SkillElement';

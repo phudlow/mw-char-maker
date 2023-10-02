@@ -1,5 +1,3 @@
-import React from 'react';
-
 import BirthsignElement from '../hoverable/BirthsignElement';
 
 function Birthsign(props) {

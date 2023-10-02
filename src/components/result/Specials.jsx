@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import { createSpecialsHtml } from '../../utils';
 import races from '../../gamedata/races';

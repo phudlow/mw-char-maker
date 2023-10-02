@@ -1,5 +1,3 @@
-import React from 'react';
-
 import PrimaryAttributeElement from '../hoverable/PrimaryAttributeElement';
 
 function PrimaryAttributes(props) {

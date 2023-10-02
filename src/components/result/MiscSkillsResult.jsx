@@ -1,5 +1,3 @@
-import React from 'react';
-
 import SkillElement from '../hoverable/SkillElement';
 
 function MiscSkillsResult(props) {

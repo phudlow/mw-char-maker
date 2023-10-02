@@ -1,5 +1,3 @@
-import React from 'react';
-
 import RaceSelector from './RaceSelector';
 import SpecSelector from './SpecSelector';
 import AttributeSelector from './AttributeSelector';

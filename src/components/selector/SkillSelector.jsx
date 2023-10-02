@@ -1,5 +1,3 @@
-import React from 'react';
-
 import skills from '../../gamedata/skills'
 
 import SkillElement from '../hoverable/SkillElement';

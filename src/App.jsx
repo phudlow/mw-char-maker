@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import Form from './components/form/Form';
 import Result from './components/result/Result';

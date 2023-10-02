@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { toPresentationStr, createSpecialsHtml } from '../../utils';
 import races from '../../gamedata/races';
 

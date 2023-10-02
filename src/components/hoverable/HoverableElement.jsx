@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import { toPresentationStr } from '../../utils'
 
@@ -24,7 +24,7 @@ class HoverableElement extends Component {
             tip.style.top  = `${e.clientY + (forFixed ? 0 : window.scrollY)}px`;
         }
     }
-    onMouseLeave(e) {
+    onMouseLeave() {
         document.querySelectorAll('.tooltip').forEach(tip => tip.hidden = true)
     }
     getTooltip() {

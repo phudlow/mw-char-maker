@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import races from '../../gamedata/races';
 import birthsigns from '../../gamedata/birthsigns';

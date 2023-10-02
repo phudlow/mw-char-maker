@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { toPresentationStr } from '../../utils'
 import secondaryAttributes from '../../gamedata/secondaryAttributes';
 

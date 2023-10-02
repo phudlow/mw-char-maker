@@ -1,5 +1,3 @@
-import React from 'react';
-
 import SecondaryAttributeElement from '../hoverable/SecondaryAttributeElement';
 
 function SecondaryAttributes(props) {

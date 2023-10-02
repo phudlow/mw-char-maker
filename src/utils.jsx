@@ -1,5 +1,3 @@
-import React from 'react';
-
 import races from './gamedata/races';
 import primaryAttributes from './gamedata/primaryAttributes';
 import skills from './gamedata/skills';

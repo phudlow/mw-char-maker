@@ -4,18 +4,23 @@ import AttributeSelector from './AttributeSelector';
 import SkillSelector from './SkillSelector';
 import BirthsignSelector from './BirthsignSelector';
 import Help from './Help';
+import { useCallback } from 'react';
 
 function SelectorContainer(props) {
     const selectingFor = props.selecting && props.selecting.aspect;
+
+    const handleOverlayInteraction = useCallback((e) => {
+        e.target.className.includes("selector-container") &&
+        props.onSelectionClick(null, null, null);
+    }, [])
+
     return (
         <div
             className="selector-container"
             style={{display: selectingFor ? 'flex' : 'none'}}
-            onClick={(e) => {
-                e.target.className.includes("selector-container") &&
-                props.onSelectionClick(null, null, null);
-            }
-        }>
+            onClick={handleOverlayInteraction}
+            onTouchEnd={handleOverlayInteraction}
+        >
             <RaceSelector
                 active={selectingFor === 'race'}
                 onSelectionClick={props.onSelectionClick}

@@ -59,7 +59,7 @@ function Help(props) {
             </div>
             <button
                 onClick={props.onSelectionClick}
-                onTouch={props.onSelectionClick}
+                onTouchEnd={props.onSelectionClick}
             >
                 OK
             </button>

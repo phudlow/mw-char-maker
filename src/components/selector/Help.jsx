@@ -2,7 +2,7 @@ function Help(props) {
     return (
         <div id="help" hidden={!props.active}>
             <div>
-                <div className="how-to">
+                <div>
                     <div className="title">How to Use</div>
                     <br/>
                     Click on an individual character element within the box to customize.
@@ -57,7 +57,12 @@ function Help(props) {
                 </div>
                 <br/>
             </div>
-            <button onClick={props.onSelectionClick}>OK</button>
+            <button
+                onClick={props.onSelectionClick}
+                onTouch={props.onSelectionClick}
+            >
+                OK
+            </button>
         </div>
     );
 }

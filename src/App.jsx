@@ -95,7 +95,7 @@ class App extends Component {
       selecting: {
         aspect: 'help'
       }
-    })
+    }, () => document.documentElement.scrollTop = 0);
   }
   setQueryStringFromState() {
     setTimeout(() => {

@@ -175,7 +175,6 @@ class App extends Component {
   render() {
     return (
       <div id="app">
-        <div id="background-holder"></div>
         <div id="main-title">
           Morrowind Character Creation Tool
           <div onClick={this.showHelp}><span>?</span></div>

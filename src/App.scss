@@ -17,8 +17,14 @@ $cursor             : url(./img/cursor.png) 0 0, auto;
 $column-width       : 150px;
 $column-side-margin : 20px;
 
+html {
+  height: 100%;
+}
+
 body {
-  margin: 0;
+  position: fixed;
+  min-height: 100%;
+  width: 100%;
 
   cursor: $cursor;
 
@@ -32,21 +38,14 @@ body {
   font-family: Pelagiad;
 
   user-select: none;
-  height: 100vh;
 
   color: $regular-text-color;
   .title { color: $title-text-color }
-}
 
-#background-holder {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: calc(100vw - 17px);
-  z-index: -1;
   background-image: url(./img/ordinator.jpg);
+  background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
 }
 
 #form {

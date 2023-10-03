@@ -18,6 +18,10 @@ $column-width       : 150px;
 $column-side-margin : 20px;
 $mobile-threshold   : 768px;
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
@@ -249,7 +253,7 @@ input[type=text] {
     }
 
     .icon-header {
-      height: 2.2em;
+      height: 2.8em;
       .title {
         text-align: left;
       }
@@ -376,4 +380,32 @@ button {
   &:hover {
     color: $title-text-color
   }
+}
+
+#test-drawer {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow-y: scroll;
+
+  background-color: pink; // [ ] TODO Remove
+
+  // Drawer animation
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+#test-header {
+  padding: 20px;
+  background-color: blue;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  font-size: 1.5em;
 }

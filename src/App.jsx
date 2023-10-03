@@ -4,7 +4,7 @@ import Form from './components/form/Form';
 import Result from './components/result/Result';
 import SelectorContainer from './components/selector/SelectorContainer';
 
-import { getStateFromQueryString, getQueryStringFromState } from './utils';
+import { getStateFromQueryString, getQueryStringFromState, isDesktop } from './utils';
 
 // Default state describing default character aspect selections
 const initialState = {
@@ -34,6 +34,9 @@ const initialState = {
   // If selecting, an object which holds "aspect" and "index" info about what is being selected
   // Example: selecting: { aspect: 'majorSkills', index: 1 }
   selecting: null,
+
+  // Mobile only
+  showingFormSlider: false
 }
 
 class App extends Component {
@@ -75,6 +78,9 @@ class App extends Component {
 
     this.onSelectionClick = this.onSelectionClick.bind(this);
     this.showHelp         = this.showHelp.bind(this);
+
+    // Mobile only
+    this.toggleFormSlider = this.toggleFormSlider.bind(this);
   }
   onShowSelector(aspect, e) {
     this.setState({
@@ -96,6 +102,11 @@ class App extends Component {
         aspect: 'help'
       }
     }, () => document.documentElement.scrollTop = 0);
+  }
+  toggleFormSlider() {
+    this.setState({
+      showingFormSlider: !this.state.showingFormSlider
+    })
   }
   setQueryStringFromState() {
     setTimeout(() => {
@@ -190,6 +201,31 @@ class App extends Component {
           selecting={this.state.selecting}
           onSelectionClick={this.onSelectionClick}
         />
+        {!isDesktop() && <div
+          id="test-drawer"
+          className={this.state.showingFormSlider ? 'active' : ''}
+        >
+          GROUP
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          GROUP
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          GROUP
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          GROUP
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          GROUP
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          GROUP
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          GROUP
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          GROUP
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          END
+        </div>}
+        {!isDesktop() && <div id="test-header" onTouchEnd={this.toggleFormSlider}>
+          {this.state.showingFormSlider ? "⮜ Result" : "⮞ Form"}
+        </div>}
       </div>
     );
   }

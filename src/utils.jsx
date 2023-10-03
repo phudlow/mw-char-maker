@@ -149,9 +149,17 @@ function createSpecialsHtml(specials) {
     )
 }
 
+function isDesktop() {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return false;
+    }
+    return true;
+}
+
 export {
     getStateFromQueryString,
     getQueryStringFromState,
     toPresentationStr,
-    createSpecialsHtml
+    createSpecialsHtml,
+    isDesktop
 }

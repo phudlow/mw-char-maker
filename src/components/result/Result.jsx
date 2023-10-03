@@ -38,8 +38,8 @@ class Result extends Component {
     }
     getMagickaMultiplier() {
         return 1 +
-               (races[this.props.data.race].magickaMultiplier || 0 ) +
-               (birthsigns[this.props.data.birthsign].magickaMultiplier || 0);
+            (races[this.props.data.race].magickaMultiplier || 0 ) +
+            (birthsigns[this.props.data.birthsign].magickaMultiplier || 0);
     }
     getSkillValues() {
         const skillValues  = {};
@@ -91,14 +91,14 @@ class Result extends Component {
                     />
                     <br/>
                     <PrimaryAttributes
-                       strength={primaryAttributes.strength}
-                       intelligence={primaryAttributes.intelligence}
-                       willpower={primaryAttributes.willpower}
-                       agility={primaryAttributes.agility}
-                       speed={primaryAttributes.speed}
-                       endurance={primaryAttributes.endurance}
-                       personality={primaryAttributes.personality}
-                       luck={primaryAttributes.luck}
+                        strength={primaryAttributes.strength}
+                        intelligence={primaryAttributes.intelligence}
+                        willpower={primaryAttributes.willpower}
+                        agility={primaryAttributes.agility}
+                        speed={primaryAttributes.speed}
+                        endurance={primaryAttributes.endurance}
+                        personality={primaryAttributes.personality}
+                        luck={primaryAttributes.luck}
                     />
                 </div>
                 <div>

@@ -16,6 +16,7 @@ $font-size          : 20px;
 $cursor             : url(./img/cursor.png) 0 0, auto;
 $column-width       : 150px;
 $column-side-margin : 20px;
+$mobile-threshold   : 768px;
 
 html {
   height: 100%;
@@ -323,7 +324,7 @@ input[type=text] {
   overflow-y: scroll;
 
   align-items: start;
-  @media (min-width: 768px) {
+  @media (min-width: $mobile-threshold) {
     align-items: center;
   }
 

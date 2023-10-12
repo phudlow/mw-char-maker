@@ -10,13 +10,15 @@
 // ------ //
 // Global //
 // ------ //
-$title-text-color   : rgb(223, 201, 159);
-$regular-text-color : rgb(202, 165, 96);
-$font-size          : 20px;
-$cursor             : url(./img/cursor.png) 0 0, auto;
-$column-width       : 150px;
-$column-side-margin : 20px;
-$mobile-threshold   : 768px;
+$title-text-color      : rgb(223, 201, 159);
+$regular-text-color    : rgb(202, 165, 96);
+$font-size             : 20px;
+$cursor                : url(./img/cursor.png) 0 0, auto;
+$desktop-column-width  : 150px;
+$desktop-column-margin : 20px;
+$mobile-threshold      : 768px;
+$max-desktop-width     : 980px;
+$header-height         : 70px;
 
 * {
   box-sizing: border-box;
@@ -30,13 +32,14 @@ body {
   position: fixed;
   min-height: 100%;
   width: 100%;
+  margin: 0;
 
   cursor: $cursor;
 
   display: flex;
   justify-content: center;
 
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
 
   font-size: $font-size;
@@ -64,43 +67,14 @@ body {
 // ------ //
 // Layout //
 // ------ //
-#app {
-  margin-top: 5vh;
+#desktop-app {
+  margin-top: max($header-height, 10vh);
   margin-bottom: 5vh;
 }
 
-#form, #result, #main-title {
+#form.desktop, #result.desktop {
   margin: 20px;
   padding: 15px;
-}
-
-#result {
-  padding-right: 0;
-  min-height: 20em;
-}
-
-#main-title {
-  font-size: 2em;
-  div {
-    float: right;
-    height: 1em;
-    width: 1em;
-    padding: 2px;
-    border: 2px solid $regular-text-color;
-    border-radius: 100%;
-    text-align: center;
-    vertical-align: bottom;
-    background-color: black;
-    &:hover {
-      color: $title-text-color;
-      border: 2px solid $title-text-color;
-    }
-    span {
-      position: relative;
-      bottom: 0.03em;
-      left: 0.025em;
-    }
-  }
 }
 
 #result {
@@ -108,16 +82,43 @@ body {
   width: 49em;
 }
 
-#form, #app {
+#desktop-app, #desktop-app #form {
   border: 1px solid $regular-text-color;
   background-color: rgba(0.5, 0.5, 0.5, 0.8);
 }
 
 #form {
-  background-color: black;
+  &.desktop {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    height: 168px;
+    background-color: black;
+
+    .form-item {
+      width: $desktop-column-width;
+      margin-right: $desktop-column-margin;
+    }
+  }
+
+  &.mobile {
+    background-color: rgba(0.5, 0.5, 0.5, 0.8);
+    padding: 10px;
+    height: 100vh;
+    vertical-align: top;
+    font-size: 1.2em;  // TODO refactor andd use same value for result and help
+
+    .form-item {
+      width: calc(50% - 20px);
+      margin: 20px 10px;
+      vertical-align: top;
+      display: inline-block;
+    }
+  }
 }
 
-#form, #class-form, #result {
+#result {
   & > * {
     display: inline-block;
     vertical-align: top;
@@ -132,18 +133,8 @@ body {
 .major-skills-result,
 .minor-skills-result,
 .misc-skills-result {
-  width: $column-width;
-}
-
-#person,
-#class-form > div,
-#birthsign,
-.secondary-attributes,
-.primary-attributes,
-.major-skills-result,
-.minor-skills-result,
-.misc-skills-result {
-  margin-right: $column-side-margin;
+  margin-right: $desktop-column-margin;
+  width: $desktop-column-width;
 }
 
 span:not(:first-child) {
@@ -158,32 +149,6 @@ span:not(:first-child) {
     top: -0.1em;
   }
 }
-
-// ---------- //
-// Text Input //
-// ---------- //
-input[type=text] {
-  font-family: Pelagiad;
-  width: 100%;
-  font-size: $font-size;
-  background-color: black;
-  border: 1px solid $regular-text-color;
-  color: $regular-text-color;
-  outline: none;
-  &::selection {
-    // TODO figure out what the actual selection color is
-    background-color: white;
-  }
-
-  &:hover {
-    color: $title-text-color;
-  }
-  &:focus {
-    border: 1px solid $title-text-color;
-    color: $title-text-color;
-  }
-}
-
 
 // ------------------------ //
 // Secondary Attribute Bars //
@@ -246,7 +211,7 @@ input[type=text] {
     border: 2px solid $regular-text-color;
     color: $regular-text-color;
     text-align: left;
-    z-index: 1;
+    z-index: 12;
 
     &.race .stats {
       white-space: nowrap;
@@ -301,7 +266,7 @@ input[type=text] {
         }
         > div {
           &:first-child {
-            width: $column-width;
+            width: $desktop-column-width;
             margin-right: 30px;
           }
           display: inline-block;
@@ -325,7 +290,9 @@ input[type=text] {
   justify-content: center;
   text-align: center;
   background-color: rgba(0.5, 0.5, 0.5, 0.5);
-  overflow-y: scroll;
+  overflow-y: auto;
+  z-index: 10;
+  padding: 10px;
 
   align-items: start;
   @media (min-width: $mobile-threshold) {
@@ -351,9 +318,8 @@ input[type=text] {
   }
 
   #help {
+    max-width: $max-desktop-width;
     text-align: left;
-    position: relative;
-    margin: 10px;
     * {
       vertical-align: top;
     }
@@ -368,7 +334,7 @@ input[type=text] {
 // ------ //
 // Button //
 // ------ //
-button {
+button { // TODO fix button alignment on modals after recent changes
   border: 1px solid $regular-text-color;
   outline: 1px solid $title-text-color;
   background-color: black;
@@ -382,15 +348,14 @@ button {
   }
 }
 
-#test-drawer {
+#drawer {
   height: 100vh;
   width: 100vw;
   position: fixed;
-  top: 0;
+  top: $header-height;
   right: 0;
   overflow-y: scroll;
-
-  background-color: pink; // [ ] TODO Remove
+  z-index: 3;
 
   // Drawer animation
   transform: translateX(-100%);
@@ -400,12 +365,39 @@ button {
   }
 }
 
-#test-header {
-  padding: 20px;
-  background-color: blue;
+#header {
+  padding: 0 20px;
+  height: $header-height;
   position: fixed;
   top: 0;
-  right: 0;
-  width: 100vw;
+  left: 0;
+  width: 100%;
   font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 7;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  background-color: rgba(0.5, 0.5, 0.5, 0.8);
+  &.mobile {
+    background-color: black
+  }
+
+  -webkit-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.75);
+
+  > div {
+    width: 100%;
+    max-width: calc($max-desktop-width + 30px);
+    display: flex;
+    justify-content: space-between;
+    line-height: 100%;
+    > div {
+      display: inline-block;
+    }
+  }
 }

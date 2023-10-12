@@ -185,48 +185,51 @@ class App extends Component {
   }
   render() {
     return (
-      <div id="app">
-        <div id="main-title">
-          Morrowind Character Creation Tool
-          <div onClick={this.showHelp}><span>?</span></div>
+      <>
+        {/* Header */}
+        <div id="header" className={isDesktop() ? 'desktop' : 'mobile'}>
+          <div>
+            <div>
+              {!isDesktop() && <span onTouchEnd={this.toggleFormSlider}>
+                {this.state.showingFormSlider ? "⮜ Result" : "⮞ Form"}
+              </span>}
+              {isDesktop() && "Morrowind Character Creation Tool"}
+            </div>
+            <div onClick={this.showHelp}><span>?</span></div>
+          </div>
         </div>
-        <Form
+
+        {/* Mobile Form Slider/Drawer */}
+        {!isDesktop() && <div
+          id="drawer"
+          className={this.state.showingFormSlider ? 'active' : ''}
+        >
+          <Form
+            data={this.state}
+            eventHandlers={this.eventHandlers}
+          />
+        </div>}
+
+        {/* Mobile Result */}
+        {!isDesktop() && <Result
           data={this.state}
-          eventHandlers={this.eventHandlers}
-        />
-        <Result
-          data={this.state}
-        />
+        />}
+
+        {/* Desktop App */}
+        {isDesktop() && <div id="desktop-app">
+          <Form
+            data={this.state}
+            eventHandlers={this.eventHandlers}
+          />
+          <Result
+            data={this.state}
+          />
+        </div>}
         <SelectorContainer
           selecting={this.state.selecting}
           onSelectionClick={this.onSelectionClick}
         />
-        {!isDesktop() && <div
-          id="test-drawer"
-          className={this.state.showingFormSlider ? 'active' : ''}
-        >
-          GROUP
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          GROUP
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          GROUP
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          GROUP
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          GROUP
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          GROUP
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          GROUP
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          GROUP
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          END
-        </div>}
-        {!isDesktop() && <div id="test-header" onTouchEnd={this.toggleFormSlider}>
-          {this.state.showingFormSlider ? "⮜ Result" : "⮞ Form"}
-        </div>}
-      </div>
+      </>
     );
   }
 }

@@ -78,8 +78,9 @@ function getQueryStringFromState(state) {
     for (let key in state) {
         switch (key) {
 
-            // selecting is a UI state, we don't care about it
+            // ignore UI states
             case 'selecting':
+            case 'showingFormSlider':
                 break;
 
             // state member is an array, iterate through

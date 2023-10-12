@@ -61,19 +61,13 @@ class App extends Component {
     }
 
     this.eventHandlers = {
-      person: {
-        onRaceClick: this.onShowSelector.bind(this, 'race'),
-        onSexClick: this.changeSex.bind(this)
-      },
-      class: {
-        onSpecializationClick:   this.onShowSelector.bind(this, 'specialization'),
-        onFavoredAttributeClick: this.onShowSelector.bind(this, 'favoredAttributes'),
-        onMajorSkillClick:       this.onShowSelector.bind(this, 'majorSkills'),
-        onMinorSkillClick:       this.onShowSelector.bind(this, 'minorSkills'),
-      },
-      birthsign: {
-        onBirthsignClick: this.onShowSelector.bind(this, 'birthsign')
-      }
+      onSelectRace: this.onShowSelector.bind(this, 'race'),
+      onToggleSex: this.changeSex.bind(this),
+      onSelectSpecialization: this.onShowSelector.bind(this, 'specialization'),
+      onSelectFavoredAttribute: this.onShowSelector.bind(this, 'favoredAttributes'),
+      onSelectMajorSkill: this.onShowSelector.bind(this, 'majorSkills'),
+      onSelectMinorSkill: this.onShowSelector.bind(this, 'minorSkills'),
+      onSelectBirthsign: this.onShowSelector.bind(this, 'birthsign'),
     };
 
     this.onSelectionClick = this.onSelectionClick.bind(this);

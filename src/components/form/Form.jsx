@@ -13,14 +13,14 @@ function Form(props) {
             <div className="form-item">
                 <div className="title">Race</div>
                 <RaceElement
-                    onClick={props.eventHandlers.onRaceClick}
+                    onClick={props.eventHandlers.onSelectRace}
                     name={props.data.race}
                 />
                 {isDesktop() && <br/>}
             </div>
             <div className="form-item">
                 <div className="title">Sex</div>
-                <div className="sex-selector" onClick={props.eventHandlers.onSexClick}>
+                <div className="sex-selector" onClick={props.eventHandlers.onToggleSex}>
                     {toPresentationStr(props.data.sex)}
                     <span>⮞</span>
                 </div>
@@ -29,7 +29,7 @@ function Form(props) {
                 <div className="title">Specialization</div>
                 <SpecElement
                     name={props.data.specialization}
-                    onClick={props.eventHandlers.onSpecializationClick}
+                    onClick={props.eventHandlers.onSelectSpecialization}
                 />
                 {isDesktop() && <br/>}
             </div>
@@ -37,12 +37,12 @@ function Form(props) {
                 <div className="title">Favored Attributes</div>
                 <PrimaryAttributeElement
                     name={props.data.favoredAttributes[0]}
-                    onClick={props.eventHandlers.onFavoredAttributeClick}
+                    onClick={props.eventHandlers.onSelectFavoredAttribute}
                     index="0"
                 />
                 <PrimaryAttributeElement
                     name={props.data.favoredAttributes[1]}
-                    onClick={props.eventHandlers.onFavoredAttributeClick}
+                    onClick={props.eventHandlers.onSelectFavoredAttribute}
                     index="1"
                 />
             </div>
@@ -52,7 +52,7 @@ function Form(props) {
                     return (
                         <SkillElement
                             name={props.data.majorSkills[index]}
-                            onClick={props.eventHandlers.onMajorSkillClick}
+                            onClick={props.eventHandlers.onSelectMajorSkill}
                             index={index}
                             key={props.data.majorSkills[index]}
                         />
@@ -65,7 +65,7 @@ function Form(props) {
                     return (
                         <SkillElement
                             name={props.data.minorSkills[index]}
-                            onClick={props.eventHandlers.onMinorSkillClick}
+                            onClick={props.eventHandlers.onSelectMinorSkill}
                             index={index}
                             key={props.data.minorSkills[index]}
                         />
@@ -76,7 +76,7 @@ function Form(props) {
                 <div className="title">Birthsign</div>
                 <BirthsignElement
                     name={props.data.birthsign}
-                    onClick={props.eventHandlers.onBirthsignClick}
+                    onClick={props.eventHandlers.onSelectBirthsign}
                 />
             </div>
         </div>

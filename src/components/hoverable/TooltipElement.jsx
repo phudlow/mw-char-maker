@@ -39,7 +39,7 @@ class TooltipElement extends Component {
         }, 500);
 
         const onTouchEnd = () => {
-            console.log('show selector');
+            this.props.onClick(e);
             cleanup();
         }
 

@@ -204,6 +204,7 @@ span:not(:first-child) {
 // ------- //
 .hoverable {
 
+  // TODO: tooltip is going outside viewscreen, causing scroll bars to show
   .tooltip {
     position: absolute;
     background-color: black;

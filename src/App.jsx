@@ -185,7 +185,13 @@ class App extends Component {
   }
   render() {
     return (
-      <>
+      <div onContextMenu={(e) => {
+        // Stop context menu on mobile.  We have our own use for long touch.  See TooltipElement
+        if (!isDesktop()) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }}>
         {/* Header */}
         <div id="header" className={isDesktop() ? 'desktop' : 'mobile'}>
           <div>
@@ -229,7 +235,7 @@ class App extends Component {
           selecting={this.state.selecting}
           onSelectionClick={this.onSelectionClick}
         />
-      </>
+      </div>
     );
   }
 }

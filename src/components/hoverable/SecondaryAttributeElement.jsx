@@ -1,9 +1,9 @@
 import { toPresentationStr } from '../../utils'
 import secondaryAttributes from '../../gamedata/secondaryAttributes';
 
-import HoverableElement from './HoverableElement';
+import TooltipElement from './TooltipElement';
 
-class SecondaryAttributeElement extends HoverableElement {
+class SecondaryAttributeElement extends TooltipElement {
     render() {
         return (
             <div

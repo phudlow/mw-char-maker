@@ -1,9 +1,9 @@
 import { createSpecialsHtml } from '../../utils';
 import birthsigns from '../../gamedata/birthsigns';
 
-import HoverableElement from './HoverableElement';
+import TooltipElement from './TooltipElement';
 
-class BirthsignElement extends HoverableElement {
+class BirthsignElement extends TooltipElement {
     getFormattedName() {
         return `The ${super.getFormattedName()}`;
     }

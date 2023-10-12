@@ -1,9 +1,9 @@
 import { toPresentationStr } from '../../utils'
 import skills from '../../gamedata/skills';
 
-import HoverableElement from './HoverableElement';
+import TooltipElement from './TooltipElement';
 
-class SpecElement extends HoverableElement {
+class SpecElement extends TooltipElement {
 
     // Tooltip displays the skills that belong to this specialization
     getTooltip() {

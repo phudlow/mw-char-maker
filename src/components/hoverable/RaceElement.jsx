@@ -1,9 +1,9 @@
 import { toPresentationStr, createSpecialsHtml } from '../../utils';
 import races from '../../gamedata/races';
 
-import HoverableElement from './HoverableElement';
+import TooltipElement from './TooltipElement';
 
-class RaceElement extends HoverableElement {
+class RaceElement extends TooltipElement {
 
     getTooltip() {
         const specialsHtml = createSpecialsHtml(races[this.props.name].specials)

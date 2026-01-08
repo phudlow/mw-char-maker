@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { createSpecialsHtml } from '../../utils';
 import races from '../../gamedata/races';
 import birthsigns from '../../gamedata/birthsigns';
-import startingSpellsBySchool from '../../gamedata/startingSpellsBySchool';
+import startingSpells from '../../gamedata/startingSpells';
 
 class Specials extends Component {
     constructor(props) {
@@ -33,21 +33,23 @@ class Specials extends Component {
     }
     getStartingSpellsFromSkillValues() {
         const skillValues = this.props.skillValues;
-        const startingSpells = [];
+        const playerStartingSpells = [];
 
         for (let skillAssignment in skillValues) {
             for (let skillName in skillValues[skillAssignment]) {
                 const skillValue = skillValues[skillAssignment][skillName];
-                const startingSpellsInSchool = startingSpellsBySchool[skillName]?.spells
+                const startingSpellsInSchool = startingSpells.filter((spell) => {
+                    return spell.school === skillName;
+                });
                 startingSpellsInSchool?.forEach(spell => {
-                    if (spell.requiredSkill <= this.calcForStartingSpellsFromSpellSchoolSkillValue(skillValue)) {
-                        startingSpells.push(spell);
+                    if (spell.requiredValue <= this.calcForStartingSpellsFromSpellSchoolSkillValue(skillValue)) {
+                        playerStartingSpells.push(spell);
                     }
                 });
             }
         }
 
-        return startingSpells;
+        return playerStartingSpells;
     }
     calcForStartingSpellsFromSpellSchoolSkillValue(skillValue) {
         const primaryAttributes = this.props.primaryAttributes;

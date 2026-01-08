@@ -1,6 +1,6 @@
 const primaryAttributes = {
     strength: {
-        description: 'Affects your starting health, how much you can carry, your maximum Fatigue, and how much damage you do in melee.'
+        description: 'Affects your starting Health, how much you can carry, your maximum Fatigue, and how much damage you do in melee.'
     },
     intelligence: {
         description: 'Determines your maximum amount of Magicka.'

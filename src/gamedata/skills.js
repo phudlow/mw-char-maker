@@ -23,7 +23,7 @@ const skills = {
     },
     blunt_weapon: {
         governingAttribute: 'strength',
-        description: 'Blunt weapon skill makes you more effective when using heavy bashing weapons like maces, hammers, clubs, or staves.',
+        description: 'Blunt Weapon skill makes you more effective when using heavy bashing weapons like maces, hammers, clubs, or staves.',
         spec: 'combat'
     },
     heavy_armor: {
@@ -38,7 +38,7 @@ const skills = {
     },
     medium_armor: {
         governingAttribute: 'endurance',
-        description: 'Medium armor skill lets one move and defend while wearing durable but flexable armors like chain, scale, bonemold, and Orcish armor. To use any style of armor effectively, the wearer must be trained, conditioned, and skilled in its use.',
+        description: 'Medium Armor skill lets one move and defend while wearing durable but flexible armors like chain, scale, bonemold, and Orcish armor. To use any style of armor effectively, the wearer must be trained, conditioned, and skilled in its use.',
         spec: 'combat'
     },
     spear: {
@@ -60,12 +60,12 @@ const skills = {
     },
     conjuration: {
         governingAttribute: 'intelligence',
-        description: 'The spell effects of the College of Conjuration include the mental domination of mundane and magical creatures, summoning of otherworldy weapons and armor, and summoning of Daedric or undead servants and powers to serve and protect the caster.',
+        description: 'The spell effects of the College of Conjuration include the mental domination of mundane and magical creatures, summonation of otherworldly weapons and armor, and summonation of Daedric or undead servants and powers to serve and protect the caster.',
         spec: 'magic'
     },
     destruction: {
         governingAttribute: 'willpower',
-        description: 'The destruction skill is the mastery of the spell effects of the College of Destruction.  Their spells harm living and nonliving things, and include elemental damage, draining, damaging, vulnerability, and disintegration magical effects.',
+        description: 'The destruction skill is the mastery of the spell effects of the College of Destruction. Their spells harm living and unliving things, and include elemental damage, draining, damaging, vulnerability, and disintegration magical effects.',
         spec: 'magic'
     },
     enchant: {
@@ -85,7 +85,7 @@ const skills = {
     },
     restoration: {
         governingAttribute: 'willpower',
-        description: 'Adepts of the College of Restoration heal, restore, and fortify the body\'s attributes and abilities, cure disease, and protect it from other malign influences. Restoration spells can also augment or absorb strength, endurance, intelligence, agility, and other bodily attributes.',
+        description: 'Adepts of the College of Restoration heal, restore, and fortify the body\'s attributes and abilities, cure disease, and protect it from other malign influences, Restoration spells can also augment or absorb strength, endurance, intelligence, agility, and other bodily attributes.',
         spec: 'magic'
     },
     unarmored: {
@@ -102,12 +102,12 @@ const skills = {
     },
     "hand-to-hand": {
         governingAttribute: 'speed',
-        description: 'Hand-to-hand skill is the martial art of unarmored combat. Hand-to-hand attacks damage only the fatigue of a standing opponent, but hand-to-hand attacks damage health when a target has been knocked unconscious by fatigue loss.',
+        description: 'Hand-to-hand skill is the martial art of unarmed combat. Hand-to-hand attacks damage only the fatigue of a standing opponent, but hand-to-hand attacks damage health when a target has been knocked unconscious by fatigue loss.',
         spec: 'stealth'
     },
     short_blade: {
         governingAttribute: 'speed',
-        description: 'Characters with great short-blade skill are more effective with short, quick, thrusting weapons like daggers, tantos, short swords, and wakizashis.',
+        description: 'Characters with great short-blade skill are more effective with short, quick, thrusting weapons like daggers, tantos, short swords, and wakazashi.',
         spec: 'stealth'
     },
     light_armor: {
@@ -131,7 +131,7 @@ const skills = {
         spec: 'stealth'
     },
     sneak: {
-        governingAttribute: 'ability',
+        governingAttribute: 'agility',
         description: 'The Sneak discipline is the art of moving unseen and unheard. Skilled sneaks are also adept pickpockets.',
         spec: 'stealth'
     },

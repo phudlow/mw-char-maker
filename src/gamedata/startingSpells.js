@@ -36,7 +36,7 @@ const startingSpells = [
         cost: 21,
         effects: [{
             spell: 'summon_ancestral_ghost',
-            text: 'Summon Ancestral Ghost for 60 secs'
+            text: 'Summon Ancestral Ghost for 60 secs on Self'
         }]
     },
     {
@@ -46,7 +46,7 @@ const startingSpells = [
         cost: 6,
         effects: [{
             spell: 'fire_damage',
-            text: 'Fire Damage 15-30 pts for 1 sec on Touch'
+            text: 'Fire Damage 15 to 30 pts on Touch'
         }]
     },
     {
@@ -56,7 +56,7 @@ const startingSpells = [
         cost: 15,
         effects: [{
             spell: 'chameleon',
-            text: 'Chameleon 10 pts for 30 secs on Self'
+            text: 'Chameleon 10% for 30 secs on Self'
         }]
     },
     {
@@ -76,7 +76,7 @@ const startingSpells = [
         cost: 19,
         effects: [{
             spell: 'detect_animal',
-            text: 'Detect Animal 50-100 pts for 5 secs on Self'
+            text: 'Detect Animal 50 to 150 ft for 5 secs on Self'
         }]
     },
     {
@@ -86,7 +86,7 @@ const startingSpells = [
         cost: 13,
         effects: [{
             spell: 'restore_health',
-            text: 'Restore Health 20-80 pts for 1 sec on Self'
+            text: 'Restore Health 20 to 80 pts on Self'
         }]       
     }
 ];

@@ -192,14 +192,16 @@ const birthsigns = {
                 cost: 5,
                 effects: [{
                     spell: 'detect_animal',
-                    text: 'Detect Animal for 60 secs in 200 ft'
-                }, {
-                    spell: 'detect_key',
-                    text: 'Detect Key for 60 secs in 200 ft'
-                }, {
+                    text: 'Detect Animal 200 ft for 60 secs on Self'
+                },
+                {
                     spell: 'detect_enchantment',
-                    text: 'Detect Enchantment for 60 secs in 200 ft'
-                }]
+                    text: 'Detect Enchantment 200 ft for 60 secs on Self'
+                },
+                {
+                    spell: 'detect_key',
+                    text: 'Detect Key 200 ft for 60 secs on Self'
+                }], 
             }],
             powers: [{
                 name: 'Tower Key',

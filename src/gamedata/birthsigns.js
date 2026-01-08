@@ -9,7 +9,7 @@ const birthsigns = {
                     text: 'Fortify Maximum Magicka 1.5x INT'
                 }, {
                     spell: 'weakness_to_magicka',
-                    text: 'Weakness to Magicka 25%'
+                    text: 'Weakness to Magicka 50%'
                 }]
             }]
         }
@@ -18,7 +18,7 @@ const birthsigns = {
         magickaMultiplier: 2,
         specials: {
             abilities: [{
-                name: 'Wombborn',
+                name: 'Wombburn',
                 effects: [{
                     spell: 'spell_absorption',
                     text: 'Spell Absorption 50 pts'
@@ -100,7 +100,7 @@ const birthsigns = {
         magickaMultiplier: 0.5,
         specials: {
             abilities: [{
-                name: 'Mooncalf',
+                name: 'Fay',
                 effects: [{
                     spell: 'fortify_maximum_magicka',
                     text: 'Fortify Maximum Magicka 0.5x INT'

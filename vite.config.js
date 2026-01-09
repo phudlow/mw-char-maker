@@ -9,4 +9,6 @@ export default defineConfig({
       usePolling: true,
     }
   },
+  // Uncomment before building to host on patrickhudlow.com/mwcct
+  // base: "/mwcct/"
 })

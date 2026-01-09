@@ -427,7 +427,7 @@ const races = {
             medium_armor: 10
         },
         specials: {
-            abilties: [{
+            abilities: [{
                 name: 'Resist Magicka',
                 effects: [{
                     spell: 'resist_magicka',

@@ -87,6 +87,7 @@ class Result extends Component {
                         endurance={primaryAttributes.endurance}
                         personality={primaryAttributes.personality}
                         luck={primaryAttributes.luck}
+                        birthsign={this.props.data.birthsign}
                         magickaMultiplier={this.getMagickaMultiplier()}
                     />
                     <br/>

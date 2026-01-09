@@ -1,7 +1,9 @@
 import SecondaryAttributeElement from '../hoverable/SecondaryAttributeElement';
 
 function SecondaryAttributes(props) {
-    const health  = Math.floor((props.strength + props.endurance) / 2);
+    const baseEndurance = props.birthsign === 'lady' ? props.endurance - 25 : props.endurance;
+
+    const health  = Math.floor((props.strength + baseEndurance) / 2);
     const magicka = props.intelligence * props.magickaMultiplier;
     const fatigue = props.strength + props.willpower + props.agility + props.endurance;
 

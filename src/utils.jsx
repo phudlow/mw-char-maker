@@ -113,7 +113,7 @@ function createSpecialsHtml(specials) {
                 return (
                     <div key={effect.text}>
                         <img
-                            src={`/src/img/icons/spells/${effect.spell}.png`}
+                            src={getIconSrc(`/src/img/icons/spells/${effect.spell}.png`)}
                             alt=''
                         />
                         {effect.text}
@@ -149,9 +149,15 @@ function createSpecialsHtml(specials) {
     )
 }
 
+function getIconSrc(path) {
+    const modules = import.meta.glob("/src/img/icons/**", { eager: true });
+    return modules[path].default;
+}
+
 export {
     getStateFromQueryString,
     getQueryStringFromState,
     toPresentationStr,
-    createSpecialsHtml
+    createSpecialsHtml,
+    getIconSrc
 }

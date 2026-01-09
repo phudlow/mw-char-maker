@@ -1,11 +1,11 @@
-import { toPresentationStr } from '../../utils'
+import { toPresentationStr, getIconSrc } from '../../utils'
 import skills from '../../gamedata/skills';
 
 import HoverableElement from './HoverableElement';
 
 class SkillElement extends HoverableElement {
     getTooltip() {
-        const imgSrc = `/src/img/icons/skills/${this.props.name}.png`;
+        const imgSrc = getIconSrc(`/src/img/icons/skills/${this.props.name}.png`);
         const description = skills[this.props.name].description;
         const governingAttribute = toPresentationStr(skills[this.props.name].governingAttribute);
 

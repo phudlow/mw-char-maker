@@ -1,4 +1,4 @@
-import { toPresentationStr } from '../../utils'
+import { toPresentationStr, getIconSrc } from '../../utils'
 import secondaryAttributes from '../../gamedata/secondaryAttributes';
 
 import HoverableElement from './HoverableElement';
@@ -18,7 +18,7 @@ class SecondaryAttributeElement extends HoverableElement {
         );
     }
     getTooltip() {
-        const imgSrc = `/src/img/icons/secondaryAttributes/${this.props.name}.png`;
+        const imgSrc = getIconSrc(`/src/img/icons/secondaryAttributes/${this.props.name}.png`);
         const description = secondaryAttributes[this.props.name].description;
 
         return (

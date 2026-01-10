@@ -85,7 +85,7 @@ const skills = {
     },
     restoration: {
         governingAttribute: 'willpower',
-        description: 'Adepts of the College of Restoration heal, restore, and fortify the body\'s attributes and abilities, cure disease, and protect it from other malign influences, Restoration spells can also augment or absorb strength, endurance, intelligence, agility, and other bodily attributes.',
+        description: 'Adepts of the College of Restoration heal, restore, and fortify the body\'s attributes and abilities, cure disease, and protect it from other malign influences. Restoration spells can also augment or absorb strength, endurance, intelligence, agility, and other bodily attributes.',
         spec: 'magic'
     },
     unarmored: {

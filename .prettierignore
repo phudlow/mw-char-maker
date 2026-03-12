@@ -1,0 +1,3 @@
+# Ignore artifacts
+pnpm-lock.yaml
+*.md

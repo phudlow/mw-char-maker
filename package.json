@@ -6,7 +6,10 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "test": "exec playwright test",
+    "test-ui": "playwright test --ui",
+    "report": "exec playwright show-report"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -14,6 +17,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.59.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",

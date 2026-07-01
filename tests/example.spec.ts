@@ -3,7 +3,9 @@ import { test, expect } from "@playwright/test";
 test("has title", async ({ page }) => {
   await page.goto("/");
 
-  await expect(page.getByText("Vite + React")).toBeVisible();
+  await expect(
+    page.getByText("Morrowind Character Creation Tool"),
+  ).toBeVisible();
 });
 
 // test('get started link', async ({ page }) => {

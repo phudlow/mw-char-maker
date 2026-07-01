@@ -8,4 +8,7 @@ export default defineConfig({
   test: {
     include: ["./src/*.test.ts"],
   },
+  server: {
+    port: 5173,
+  },
 });
